@@ -1,7 +1,18 @@
 class PagesController < ApplicationController
   def home
     if current_user
-      redirect_to :pairing
+      case
+      when current_user.user_status == "created"
+        redirect_to :pairing
+      when current_user.user_status == "pairing_done" || current_user.user_status == "in_prepwork"
+        redirect_to :prepwork
+      when current_user.user_status == "in_program"
+        redirect_to :my_program
+      else
+        render :home
+      end
+    else
+      render :home
     end
   end
 
