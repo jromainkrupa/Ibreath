@@ -19,4 +19,17 @@ class PagesController < ApplicationController
 
     # if current_user.created_at > 1 semaine render program is ready
   end
+
+  def program_launch
+    render "pages/program_launch"
+  end
+
+  def prepwork_results
+    render "pages/prepwork_results"
+  end
+
+  def my_program
+    render "pages/my_program"
+  end
+
 end

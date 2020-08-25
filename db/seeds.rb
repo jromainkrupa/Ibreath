@@ -24,10 +24,10 @@ joseph = User.create(
   )
 
 puts "joseph creation !"
-puts "let's set Joseph consumption"
+puts "let's set Joseph prepwork"
 
 # We begin the prepwork for joseph
-init_date_time = DateTime.new(2020,8,1,9,00,00)
+init_date_time = DateTime.new(2020,8,3,9,00,00)
 
 puts "Day 1 consumption:"
 Smoke.create(user:joseph, created_at: init_date_time)
@@ -92,14 +92,106 @@ puts "Joseph Programm is ready !!!"
 
 puts "////////////////////////////"
 
-program_date_launch = DateTime.new(2020,8,8,7,30,15)
-puts "Joseph click on Launch #{program_date_launch}"
-total_smoke = Smoke.where(user: joseph).count
+program_date_launch_joseph = DateTime.new(2020,8,10,7,30,15)
+total_joseph_smoke = Smoke.where(user: joseph).count
+first_joseph_smoke_date = Smoke.where(user: joseph).first.created_at.to_datetime
+day_of_prepwork_joseph = (program_date_launch_joseph - first_joseph_smoke_date).round
+average_joseph_day_smoke = (total_joseph_smoke / day_of_prepwork_joseph).round
+puts "Joseph did #{day_of_prepwork_joseph} days of prepwork and smoked #{total_joseph_smoke}!"
+puts "That represent : #{total_joseph_smoke * 0.5 } € and an average smoke of: #{average_joseph_day_smoke} / day "
+#Program.new(user_id:  joseph, init_smoke: init_smoke, start_time: program_date_launch_joseph)
 
-day_of_prepwork = (program_date_launch - Smoke.first.created_at.to_datetime).round
-puts "Joseph did #{day_of_prepwork} days of prepwork and smoked #{total_smoke}!"
-puts "That represent : #{total_smoke * 0.5 } €"
-#Program.new(user_id:  joseph, init_smoke: init_smoke, start_time: program_date_launch)
+puts "////////////////////////////"
+puts "Romain creation"
+puts "////////////////////////////"
+puts "...."
+
+romain = User.create(
+  first_name: 'romain',
+  last_name: 'Garcia',
+  birth_date: Date.new(1984, 6, 3),
+  email: 'romain@gmail.com',
+  password: 'azerty'
+  )
+
+puts "let's set Romain prepwork"
+
+# We begin the prepwork for joseph
+init_date_time = DateTime.new(2020,7,6,9,00,00)
+
+puts "Day 1 consumption:"
+Smoke.create(user:romain, created_at: init_date_time)
+puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+
+15.times do
+  init_date_time += 58.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 2 consumption:"
+init_date_time += 1.day - 16.hours + 9.minutes + 30.seconds
+20.times do
+  init_date_time += 33.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 3 consumption:"
+init_date_time += 1.day - 10.hours + 17.minutes + 34.seconds
+15.times do
+  init_date_time += 52.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 4 consumption:"
+init_date_time += 1.day - 12.hours + 12.minutes + 43.seconds
+13.times do
+  init_date_time += 23.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 5 consumption:"
+init_date_time += 1.day - 8.hours + 42.minutes + 13.seconds
+16.times do
+  init_date_time += 42.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 6 consumption:"
+init_date_time += 1.day - 12.hours - 28.minutes + 19.seconds
+13.times do
+  init_date_time += 51.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+
+puts "Day 7 consumption:"
+init_date_time += 1.day - 13.hours + 13.minutes + 19.seconds
+12.times do
+  init_date_time += 36.minutes
+  Smoke.create(user:romain, created_at: init_date_time)
+  puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
+end
+puts "////////////////////////////"
+
+puts "romain Programm is ready !!!"
+
+puts "////////////////////////////"
+
+program_date_launch_romain = DateTime.new(2020,7,13,9,30,15)
+puts "romain click on Launch #{program_date_launch_romain}"
+total_romain_smoke = Smoke.where(user: romain).count
+first_romain_smoke_date = Smoke.where(user: romain).first.created_at.to_datetime
+
+day_of_prepwork_romain = (program_date_launch_romain - first_romain_smoke_date).round
+average_romain_day_smoke = (total_romain_smoke / day_of_prepwork_romain).round
+puts "romain did #{day_of_prepwork_romain} days of prepwork and smoked #{total_romain_smoke}!"
+puts "That represent : #{total_romain_smoke * 0.5 } € and an average smoke of: #{average_romain_day_smoke} / day "
+#Program.new(user_id:  romain, init_smoke: init_smoke, start_time: program_date_launch_romain)
 
 puts "////////////////////////////"
 puts "Programm creation"
@@ -107,8 +199,12 @@ puts "////////////////////////////"
 puts "...."
 
 
+romain_program = Program.new(user: romain, start_time: program_date_launch_romain, init_smoke: average_romain_day_smoke)
 
-
+puts "romain program has been created"
+puts "the current date is #{program_date_launch_romain}"
+# day_of_romain_program =
+# puts "this is DAY #{}"
 
 # initial_date = 1.month.ago
 
