@@ -1,20 +1,34 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
+<div class="container flex flex-col h-screen overflow-auto">
+  <div class="flex flex-col items-center flex-grow">
+    <h2 class="text-green-400 text-2xl py-24">Sign in</h2>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs w-screen">
+        <div class="bg-gray-200 py-3 px-6 mb-3 mx-6 rounded flex items-center">
+          <i class="far fa-envelope text-gray-400"></i>
+          <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+                input_html: { autocomplete: "email", class: "ml-12 bg-gray-200 w-24"},
+                label: false,
+                placeholder: "Email" %>
+        </div>
+        <div class="bg-gray-200 py-3 px-6 mb-3 mx-6 rounded flex items-center">
+          <i class="fas fa-unlock text-gray-400"></i>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password", class: "ml-12 bg-gray-200 w-24"},
+                      label: false,
+                      placeholder: "Password" %>
+        </div>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+      <div class="form-actions text-center">
+        <%= f.button :submit, "SIGN IN", class: "mt-20 py-3 px-16 bg-green-400 rounded-full text-white text-xs font-semibold" %>
+      </div>
+    <% end %>
 
-<%= render "devise/shared/links" %>
+  </div>
+  <div class="flex flex-col items-center mb-4">
+    <%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "text-gray-400 text-base font-semibold" %>
+  </div>
+</div>
