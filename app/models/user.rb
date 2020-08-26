@@ -5,6 +5,7 @@ class User < ApplicationRecord
     created: 'created',
     pairing_done: 'pairing_done',
     in_prepwork: 'in_prepwork',
+    ready_to_launch: 'ready_to_launch',
     in_program: 'in_program',
     program_finished: 'program_finished'
   }
