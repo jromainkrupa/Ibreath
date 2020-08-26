@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       when current_user.user_status == "ready_to_launch"
         redirect_to :prepwork_results
       when current_user.user_status == "in_program"
-        redirect_to :my_program
+        redirect_to :daily_program
       else
         render :home
       end
