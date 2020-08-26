@@ -1,5 +1,10 @@
-<h1>prepwork</h1>
-
-<h2>Today you smoked: <%= @smokes.count %> !</h2>
-
-<%= link_to "add a cigarette" %>
+<div class="container mx-auto flex flex-col h-screen overflow-auto items-center">
+  <p class="text-green-400 mb-24 text-center text-3xl">Today you smoked:</p>
+ <div id=mybtn class="flex-grow w-full flex items-center justify-center">
+    <div class="circle bg-green-400" style="animation-delay: -3s"></div>
+    <div class="circle bg-green-400" style="animation-delay: -2s"></div>
+    <div class="circle bg-green-400" style="animation-delay: -1s"></div>
+    <div class="circle bg-green-400" style="animation-delay: 0s"></div>
+  </div>
+  <p class="text-green-400 mb-24 text-center text-3xl">Click when you smoke</p>
+</div>

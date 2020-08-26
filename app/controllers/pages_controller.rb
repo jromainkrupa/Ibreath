@@ -13,15 +13,15 @@ class PagesController < ApplicationController
       else
         render :home
       end
-    else
+    elsif current_user
       redirect_to :about_us
     end
   end
 
   def pairing
-    redirect_to root_path unless current_user.created?
+    # redirect_to root_path unless current_user.created?
 
-    render "pages/pairing"
+    # render "pages/pairing"
   end
 
   def about_us
