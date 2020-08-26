@@ -2,6 +2,7 @@ require 'date'
 
 Smoke.destroy_all
 puts "Smokes destruction...."
+Program.destroy_all
 User.destroy_all
 puts "Users destruction...."
 
@@ -14,6 +15,12 @@ caroline = User.create(
   )
 puts "Caroline creation !"
 puts "She's ready for the prepwork"
+
+caroline.user_status = "created"
+caroline.save
+
+puts "caroline status is now #{caroline.user_status}"
+
 
 joseph = User.create(
   first_name: 'Joseph',
@@ -91,6 +98,11 @@ puts "////////////////////////////"
 puts "Joseph Programm is ready !!!"
 
 puts "////////////////////////////"
+
+joseph.user_status = "in_prepwork"
+joseph.save
+
+puts "joseph status is now #{joseph.user_status}"
 
 program_date_launch_joseph = DateTime.new(2020,8,10,7,30,15)
 total_joseph_smoke = Smoke.where(user: joseph).count
@@ -183,21 +195,27 @@ puts "Programm creation"
 puts "////////////////////////////"
 puts "...."
 romain_program = Program.new(user: romain, start_time: program_date_launch_romain, init_smoke: average_romain_day_smoke)
-#romain.user_status = "in_program"
-#romain.save
-#puts "romain status is now #{romain.user_status}"
+
+
+romain.user_status = "in_program"
+romain.save
+
+puts "romain status is now #{romain.user_status}"
+
 puts "romain program has been created"
 puts "the current date is #{program_date_launch_romain}"
+
 romain_program_smokes = [average_romain_day_smoke]
 30.times do |i|
   romain_program_smokes << (-average_romain_day_smoke.fdiv(30) * (i + 1) + average_romain_day_smoke).round
   i += 1
 end
-p romain_program_smokes
+
 romain_program_smokes.each_with_index do |smoke, index|
   unless smoke == 0
     puts "Day #{index + 1}: #{smoke} cigarettes with a spread #{(18.fdiv(smoke)*60).round}minutes"
   end
 end
+
 
 

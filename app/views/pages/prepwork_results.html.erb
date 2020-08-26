@@ -1,1 +1,26 @@
-<h1>My results of the prepwork</h1>
+<h1><%= current_user.first_name %></h1>
+<% days = {Mo: 0, Tu: 0, We: 0, Th: 0, Fr: 0, Sa: 0, Su: 0}%>
+<% Smoke.where(user_id: current_user.id).each do |smoke| %>
+  <% if smoke.created_at.strftime("%A") == "Monday" %>
+    <% days[:Mo] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Tuesday" %>
+    <% days[:Tu] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Wednesday" %>
+    <% days[:We] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Thursday" %>
+    <% days[:Th] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Friday" %>
+    <% days[:Fr] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Saturday" %>
+    <% days[:Sa] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Sunday" %>
+    <% days[:Su] += 1 %>
+  <% end %>
+<% end %>
+
+
+<div class="container flex content-center items-end">
+  <% days.each do |day, value| %>
+    <div class="w-12 mx-1 bg-green-<%=(value/10.0).ceil * 100 + 300%> flex items-end justify-center text-white font-bold" style="height: calc(<%= value %>% * 3)"><%= day %></div>
+  <% end %>
+</div>
