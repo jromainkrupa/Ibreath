@@ -12,15 +12,22 @@ class PagesController < ApplicationController
         render :home
       end
     else
-      render :home
+      redirect_to :about_us
     end
   end
 
   def pairing
+    redirect_to root_path unless current_user.created?
+
     render "pages/pairing"
   end
 
+  def about_us
+    render "pages/about_us"
+  end
+
   def tutorial
+
     render "pages/tutorial"
   end
 
@@ -41,6 +48,26 @@ class PagesController < ApplicationController
 
   def my_program
     render "pages/my_program"
+  end
+
+  private
+
+  def check_user_state(current_user)
+    if current_user
+      case
+      when current_user.user_status == "created"
+        redirect_to :pairing
+      when current_user.user_status == "pairing_done" || current_user.user_status == "in_prepwork"
+        redirect_to :prepwork
+      when current_user.user_status == "in_program"
+        redirect_to :my_program
+      else
+        render :home
+      end
+    else
+      render :home
+    end
+
   end
 
 end
