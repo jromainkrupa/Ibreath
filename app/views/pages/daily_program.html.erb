@@ -1,16 +1,42 @@
+<div class="container">
+  <div class="flex items-center">
+    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+    </svg>
+    <div class="text-center px-10">
+      <p><%= Program::DEMO_DAY.strftime('%m/%d/%Y') %></p>
+      <p>Day <%= @program_day %></p>
+    </div>
+    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+    </svg>
+  </div>
+</div>
+
+<% @program.each_with_index do |e,index| %>
+  <% if index + 1 == @program_day %>
+    <p class="text-center">You can smoke <strong><%= e %></strong> cigarettes today</p>
+  <% end  %>
+<% end %>
+
+<% Smoke.create(user:current_user, created_at: Program::DEMO_DAY) %>
+
+
+<p class="text-center">You already smoked <strong><%= current_user.smokes.where(created_at: Program::DEMO_DAY).count %></strong> today</p>
+
+<% @program.each_with_index do |e,index| %>
+  <% if index == 0 %>
+    <p class="text-center">You spared <strong><%= e - current_user.smokes.where(created_at: Program::DEMO_DAY).count %></strong> cigarettes today</p>
+  <% end  %>
+<% end %>
 
 
 
 <div class="w-full bottom-0 fixed flex bg-transparent border border-blue-500">
-  <div class="flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2">
-    <%= link_to "Today", daily_program_path %>
-  </div>
-  <div class="flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2">
-    <%= link_to "Stats", prepwork_results_path %>
-  </div>
-  <div class="flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2">
-    <%= link_to "Program", my_program_path %>
-  </div>
+  <%= link_to "Today", daily_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+  <%= link_to "Stats", prepwork_results_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+  <%= link_to "Program", my_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+
 </div>
 
 

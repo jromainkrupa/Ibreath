@@ -6,6 +6,7 @@ Program.destroy_all
 User.destroy_all
 puts "Users destruction...."
 
+
 caroline = User.create(
   first_name: 'caroline',
   last_name: 'Janin',

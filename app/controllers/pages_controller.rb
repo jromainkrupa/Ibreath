@@ -55,6 +55,8 @@ class PagesController < ApplicationController
   end
 
   def daily_program
+    @program_day = get_program_day(current_user)
+    @program = get_smoking_program(current_user)
     render "pages/daily_program"
   end
 
@@ -72,6 +74,14 @@ class PagesController < ApplicationController
       i += 1
     end
     return daily_program_smokes
+  end
+
+  def get_program_day(current_user)
+    program_date_launch = Program.where(user: current_user).first.start_time
+    #current_user.program.start_time
+    date_of_connexion = Program::DEMO_DAY
+    program_day = (date_of_connexion - program_date_launch).to_i
+    return program_day
   end
 
 end
