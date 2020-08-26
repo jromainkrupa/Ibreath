@@ -1,0 +1,158 @@
+.circle-stat {
+  position: relative;
+  margin: 7em auto;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+}
+
+//arc1
+
+.arc1 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(90deg) skewX(30deg);
+}
+
+.arc1:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+//arc2
+
+.arc2 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(150deg) skewX(30deg);
+}
+
+.arc2:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+//arc3
+
+.arc3 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(210deg) skewX(30deg);
+}
+
+.arc3:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+//arc4
+
+.arc4 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(-90deg) skewX(30deg);
+}
+
+.arc4:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+//arc5
+
+.arc5 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(-30deg) skewX(30deg);
+}
+
+.arc5:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+//arc6
+
+.arc6 {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(30deg) skewX(30deg);
+}
+
+.arc6:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em;
+  border-color: var(--my-color-border);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
