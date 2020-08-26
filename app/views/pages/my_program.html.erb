@@ -1,1 +1,10 @@
-<h1>my program</h1>
+<div class="container mx-auto flex flex-col h-screen overflow-auto items-center">
+  <h1 class="text-2xl py-4"><span class="text-gray-700">Your next</span> <span class="text-green-400"><strong>Month</strong></span></h1>
+  <div class="w-64 h-screen overflow-visible flex flex-col items-start">
+    <% @program.each do |number| %>
+      <div class="rounded relative flex items-center shadow-md <%= color_class_for_program(@program, number) %> h-4 mb-2" style="width: <%= 100 * number / @program.max %>%">
+        <p class=" text-gray-600 absolute right-0 transform text-sm translate-x-full pl-2"> <%= number %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

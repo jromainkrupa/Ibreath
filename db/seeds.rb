@@ -113,22 +113,17 @@ romain = User.create(
   email: 'romain@gmail.com',
   password: 'azerty'
   )
-
 puts "let's set Romain prepwork"
-
 # We begin the prepwork for joseph
 init_date_time = DateTime.new(2020,7,6,9,00,00)
-
 puts "Day 1 consumption:"
 Smoke.create(user:romain, created_at: init_date_time)
 puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
-
 15.times do
   init_date_time += 58.minutes
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 2 consumption:"
 init_date_time += 1.day - 16.hours + 9.minutes + 30.seconds
 20.times do
@@ -136,7 +131,6 @@ init_date_time += 1.day - 16.hours + 9.minutes + 30.seconds
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 3 consumption:"
 init_date_time += 1.day - 10.hours + 17.minutes + 34.seconds
 15.times do
@@ -144,7 +138,6 @@ init_date_time += 1.day - 10.hours + 17.minutes + 34.seconds
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 4 consumption:"
 init_date_time += 1.day - 12.hours + 12.minutes + 43.seconds
 13.times do
@@ -152,7 +145,6 @@ init_date_time += 1.day - 12.hours + 12.minutes + 43.seconds
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 5 consumption:"
 init_date_time += 1.day - 8.hours + 42.minutes + 13.seconds
 16.times do
@@ -160,7 +152,6 @@ init_date_time += 1.day - 8.hours + 42.minutes + 13.seconds
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 6 consumption:"
 init_date_time += 1.day - 12.hours - 28.minutes + 19.seconds
 13.times do
@@ -168,7 +159,6 @@ init_date_time += 1.day - 12.hours - 28.minutes + 19.seconds
   Smoke.create(user:romain, created_at: init_date_time)
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
-
 puts "Day 7 consumption:"
 init_date_time += 1.day - 13.hours + 13.minutes + 19.seconds
 12.times do
@@ -177,39 +167,37 @@ init_date_time += 1.day - 13.hours + 13.minutes + 19.seconds
   puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
 end
 puts "////////////////////////////"
-
 puts "romain Programm is ready !!!"
-
 puts "////////////////////////////"
-
 program_date_launch_romain = DateTime.new(2020,7,13,9,30,15)
 puts "romain click on Launch #{program_date_launch_romain}"
 total_romain_smoke = Smoke.where(user: romain).count
 first_romain_smoke_date = Smoke.where(user: romain).first.created_at.to_datetime
-
 day_of_prepwork_romain = (program_date_launch_romain - first_romain_smoke_date).round
 average_romain_day_smoke = (total_romain_smoke / day_of_prepwork_romain).round
 puts "romain did #{day_of_prepwork_romain} days of prepwork and smoked #{total_romain_smoke}!"
 puts "That represent : #{total_romain_smoke * 0.5 } € and an average smoke of: #{average_romain_day_smoke} / day "
 #Program.new(user_id:  romain, init_smoke: init_smoke, start_time: program_date_launch_romain)
-
 puts "////////////////////////////"
 puts "Programm creation"
 puts "////////////////////////////"
 puts "...."
-
-
 romain_program = Program.new(user: romain, start_time: program_date_launch_romain, init_smoke: average_romain_day_smoke)
-
+#romain.user_status = "in_program"
+#romain.save
+#puts "romain status is now #{romain.user_status}"
 puts "romain program has been created"
 puts "the current date is #{program_date_launch_romain}"
-# day_of_romain_program =
-# puts "this is DAY #{}"
-
-# initial_date = 1.month.ago
-
-# 25.times do |i|
-#   date = initial_date + 1
-# end
+romain_program_smokes = [average_romain_day_smoke]
+30.times do |i|
+  romain_program_smokes << (-average_romain_day_smoke.fdiv(30) * (i + 1) + average_romain_day_smoke).round
+  i += 1
+end
+p romain_program_smokes
+romain_program_smokes.each_with_index do |smoke, index|
+  unless smoke == 0
+    puts "Day #{index + 1}: #{smoke} cigarettes with a spread #{(18.fdiv(smoke)*60).round}minutes"
+  end
+end
 
 
