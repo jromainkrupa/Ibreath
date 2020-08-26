@@ -55,6 +55,10 @@ class PagesController < ApplicationController
     render "pages/my_program"
   end
 
+  def daily_program
+    render "pages/daily_program"
+  end
+
   private
 
   def get_smoking_program(current_user)
