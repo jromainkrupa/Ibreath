@@ -1,5 +1,6 @@
-<h1><%= current_user.first_name %></h1>
 <% days = {Mo: 0, Tu: 0, We: 0, Th: 0, Fr: 0, Sa: 0, Su: 0}%>
+<% hours = Hash.new(0) %>
+
 <% Smoke.where(user_id: current_user.id).each do |smoke| %>
   <% if smoke.created_at.strftime("%A") == "Monday" %>
     <% days[:Mo] += 1 %>
@@ -18,9 +19,51 @@
   <% end %>
 <% end %>
 
+<% Smoke.where(user_id: current_user.id).each do |smoke| %>
+  <% if smoke.created_at.hour >= 6 && smoke.created_at.hour < 9 %>
+    <% hours[1] += 1 %>
+  <% elsif smoke.created_at.hour >= 9 && smoke.created_at.hour < 12 %>
+    <% hours[2] += 1 %>
+  <% elsif smoke.created_at.hour >= 12 && smoke.created_at.hour < 15 %>
+    <% hours[3] += 1 %>
+  <% elsif smoke.created_at.hour >= 15 && smoke.created_at.hour < 18 %>
+    <% hours[4] += 1 %>
+  <% elsif smoke.created_at.hour >= 18 && smoke.created_at.hour < 21 %>
+    <% hours[5] += 1 %>
+  <% elsif smoke.created_at.hour >= 21 && smoke.created_at.hour < 24 %>
+    <% hours[6] += 1 %>
+  <% end %>
+<% end %>
+
+<% color_arc = ""%>
 
 <div class="container flex content-center items-end">
   <% days.each do |day, value| %>
-    <div class="w-12 mx-1 bg-green-<%=(value/10.0).ceil * 100 + 300%> flex items-end justify-center text-white font-bold" style="height: calc(<%= value %>% * 3)"><%= day %></div>
+    <div class="w-8 mx-1 bg-green-<%=(value/10.0).ceil * 100 + 300%> flex items-end justify-center text-white font-bold" style="height: calc(<%= value %>% * 3)"><%= day %></div>
+  <% end %>
+</div>
+
+<div class='circle-stat'>
+  <% 6.times do |i| %>
+    <% if hours[i]/7 == 0 %>
+      <% color_arc = "#f0fff4" %>
+    <% elsif hours[i]/7 > 12 %>
+      <% color_arc = "#22543d" %>
+    <% elsif hours[i]/7 > 10 %>
+      <% color_arc = "#276749" %>
+    <% elsif hours[i]/7 > 8 %>
+      <% color_arc = "#2f855a" %>
+    <% elsif hours[i]/7 > 7 %>
+      <% color_arc = "#38a169" %>
+    <% elsif hours[i]/7 > 5 %>
+      <% color_arc = "#48bb78" %>
+    <% elsif hours[i]/7 > 3 %>
+      <% color_arc = "#68d391" %>
+    <% elsif hours[i]/7 > 2 %>
+      <% color_arc = "#9ae6b4" %>
+    <% elsif hours[i]/7 > 1 %>
+      <% color_arc = "#c6f6d5" %>
+    <% end %>
+    <div class='arc<%=i+1%>' style="--my-color-border: <%= color_arc %>;"> </div>
   <% end %>
 </div>
