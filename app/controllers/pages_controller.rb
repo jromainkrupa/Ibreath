@@ -50,8 +50,7 @@ class PagesController < ApplicationController
 
   def my_program
     #redirect_to root_path unless current_user.prepwork_results?
-    @daily_program_smokes = get_smoking_program(current_user)
-
+    @program = get_smoking_program(current_user)
     render "pages/my_program"
   end
 
