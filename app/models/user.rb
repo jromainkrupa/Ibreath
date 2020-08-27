@@ -14,6 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :smokes
+  has_one :last_smoke, -> { order(created_at: :desc).limit(1) }, class_name: 'Smoke'
   has_one :program
 
   def get_number_of_smoke(date)
@@ -39,7 +40,7 @@ class User < ApplicationRecord
   def hourly_coefficients
     hours = self.get_hours_where_user_smoke
     hours.each do |key, value|
-      hours[key] = value / prepwork_smokes.count.to_f
+      hours[key] = (value / prepwork_smokes.count.to_f).round(3)
     end
   end
 
