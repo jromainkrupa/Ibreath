@@ -1,7 +1,7 @@
 class Program < ApplicationRecord
   belongs_to :user
 
-  DEMO_DAY = DateTime.new(2020,7,16,7,0,0)
+  DEMO_DAY = DateTime.new(2020,7,16,10,0,0)
 
   def prepwork_smokes
     user.smokes.where('created_at < ?', start_time)
@@ -24,7 +24,35 @@ class Program < ApplicationRecord
     (date - start_time).to_i
   end
 
-  def get_next_opening(date)
-    cigarette_allowed_for(date)
+  def get_next_opening
+
+  end
+
+  def get_time_from_last_smoke_to_evening(date)
+    #TIME_OF_EVENING - time_of_last_smoke(date)
+  end
+
+  def time_of_last_smoke(date)
+    user.smokes.where(created_at: date).last.created_at
+  end
+
+  def get_spread(date)
+    (Time.now.at_end_of_day - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)
+  end
+
+  def smoked_cigarette(date)
+    user.smokes.where(created_at: date)
+  end
+
+  def get_most_important_smokes(date)
+    hours = user.hourly_coefficients
+    cigarette_allowed_for = user.program.cigarette_allowed_for(date)
+    sorted_by_value_ar_of_ar = hours.sort_by do |key, value|
+      -value
+    end
+    sorted_by_key_ar_of_ar = sorted_by_value_ar_of_ar.first(cigarette_allowed_for).to_h.sort_by do |key, value|
+      key
+    end
+    sorted_by_key_ar_of_ar.to_h
   end
 end
