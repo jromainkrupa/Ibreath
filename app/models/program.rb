@@ -8,7 +8,7 @@ class Program < ApplicationRecord
   end
 
   def number_of_days_of_program
-    (DEMO_DAY - start_time).to_i
+    (Date.current - start_time).to_i
   end
 
   def cigarette_allowed_for(date)
@@ -37,7 +37,7 @@ class Program < ApplicationRecord
   end
 
   def get_spread(date)
-    (Time.now.at_end_of_day - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)
+    ((Time.now.at_end_of_day - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)).fdiv(60).round()
   end
 
   def smoked_cigarette(date)

@@ -1,7 +1,9 @@
-<% current_user.program.get_most_important_smokes(Program::DEMO_DAY).each do |key, value| %>
+<% current_user.program.get_most_important_smokes(Date.current).each do |key, value| %>
   <p>We suggest you to smoke at: <%= key %>h  </p>
 <% end %>
 </p>
+
+<p>next opening: <%= current_user.program.get_spread(Date.current) %></p>
 
 
 <div class="container">
@@ -10,8 +12,8 @@
       <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
     </svg>
     <div class="text-center px-10">
-      <p><%= Date.current.strftime('%m/%d/%Y') %></p>
-      <p>Day <%= @ar_program.number_of_days_of_program %></p>
+      <p><%= Date.current.strftime('%d %b') %></p>
+      <p>Day <%= current_user.program.number_of_days_of_program %></p>
     </div>
     <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
@@ -23,7 +25,7 @@
 <p class='text-center'>You can smoke <strong><%= @ar_program.cigarette_allowed_for(Date.current) %></strong> cigarettes today</p>
 
 
-<% Smoke.create(user:current_user, created_at: Date.current) %>
+<%# Smoke.create(user:current_user, created_at: Date.current) %>
 
 
 <p class="text-center">You already smoked <strong><%= current_user.get_number_of_smoke(Date.current) %></strong> today</p>
