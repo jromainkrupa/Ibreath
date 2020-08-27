@@ -8,6 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import "../components/click_btn.js"
+import "../components/calendar_program.js"
+import { calendarDay } from "../components/calendar_program.js"
+import { clickBtn } from "../components/click_btn.js"
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -32,4 +35,9 @@ import "../components/click_btn.js"
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  calendarDay();
+  clickBtn();
+  /* day.addEventListener("click", (event) => {
+    console.log("event");
+  }); */
 });
