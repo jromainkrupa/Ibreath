@@ -6,6 +6,7 @@ Program.destroy_all
 User.destroy_all
 puts "Users destruction...."
 
+
 caroline = User.create(
   first_name: 'caroline',
   last_name: 'Janin',
@@ -216,6 +217,13 @@ romain_program_smokes.each_with_index do |smoke, index|
     puts "Day #{index + 1}: #{smoke} cigarettes with a spread #{(18.fdiv(smoke)*60).round}minutes"
   end
 end
+
+
+require 'program_seed_creator'
+
+# ProgramSeedCreator.new(user: pat, start_time: 2.months.ago, init_smoke: 25).create
+
+
 
 
 
