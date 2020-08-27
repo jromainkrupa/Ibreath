@@ -14,7 +14,7 @@ class PagesController < ApplicationController
         render :home
       end
     else
-      redirect_to :about_us
+      render :home
     end
   end
 
