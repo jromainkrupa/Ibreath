@@ -24,6 +24,7 @@ class Program < ApplicationRecord
     (date - start_time).to_i
   end
 
-  def get_program_day
+  def get_next_opening(date)
+    cigarette_allowed_for(date)
   end
 end
