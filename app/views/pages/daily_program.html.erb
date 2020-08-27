@@ -36,11 +36,11 @@
         </div>
       </div>
  -->
+
     </div>
   </div>
 
 </div>
-
 
 <!--
 <%= link_to "Today", daily_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
@@ -49,7 +49,21 @@
       <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
     <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
 
-<% Smoke.create(user:current_user, created_at: Program::DEMO_DAY) %>
+<% Smoke.create(user:current_user, created_at: Date.current) %>
+
+
+<p class="text-center">You already smoked <strong><%= current_user.get_number_of_smoke(Date.current) %></strong> today</p>
+
+<p class="text-center">You spared <strong><%= @ar_program.average_smoke - current_user.smokes.where(created_at: Date.current).count %></strong> cigarettes today</p>
+
+
+
+
+<div class="w-full bottom-0 fixed flex bg-transparent border border-blue-500">
+  <%= link_to "Today", daily_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+  <%= link_to "Stats", prepwork_results_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+  <%= link_to "Program", my_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+</div>
 
 
 
