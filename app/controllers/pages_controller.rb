@@ -13,8 +13,8 @@ class PagesController < ApplicationController
       else
         render :home
       end
-    elsif current_user
-      redirect_to :about_us
+    else
+      render :home
     end
   end
 

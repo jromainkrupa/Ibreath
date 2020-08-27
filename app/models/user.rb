@@ -42,4 +42,5 @@ class User < ApplicationRecord
       hours[key] = value / prepwork_smokes.count.to_f
     end
   end
+
 end
