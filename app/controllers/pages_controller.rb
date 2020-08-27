@@ -55,33 +55,35 @@ class PagesController < ApplicationController
   end
 
   def daily_program
-    @program_day = get_program_day(current_user)
-    @program = get_smoking_program(current_user)
+    @ar_program = current_user.program
+
+    # @program_day = get_program_day(current_user)
+    # @program = get_smoking_program(current_user)
     render "pages/daily_program"
   end
 
   private
 
-  def get_smoking_program(current_user)
-    total_smoke = Smoke.where(user: current_user).count
-    program_date_launch = Program.where(user: current_user).first.start_time
-    first_smoke_date = Smoke.where(user: current_user).first.created_at.to_datetime
-    day_of_prepwork = (program_date_launch - first_smoke_date).round
-    average_smoke = (total_smoke / day_of_prepwork).round
-    daily_program_smokes = [average_smoke]
-    30.times do |i|
-      daily_program_smokes << (-average_smoke.fdiv(30) * (i + 1) + average_smoke).round
-      i += 1
-    end
-    return daily_program_smokes
-  end
+  # def get_smoking_program(current_user)
+  #   total_smoke = Smoke.where(user: current_user).count
+  #   program_date_launch = Program.where(user: current_user).first.start_time
+  #   first_smoke_date = Smoke.where(user: current_user).first.created_at.to_datetime
+  #   day_of_prepwork = (program_date_launch - first_smoke_date).round
+  #   average_smoke = (total_smoke / day_of_prepwork).round
+  #   daily_program_smokes = [average_smoke]
+  #   30.times do |i|
+  #     daily_program_smokes << (-average_smoke.fdiv(30) * (i + 1) + average_smoke).round
+  #     i += 1
+  #   end
+  #   return daily_program_smokes
+  # end
 
-  def get_program_day(current_user)
-    program_date_launch = Program.where(user: current_user).first.start_time
-    #current_user.program.start_time
-    date_of_connexion = Program::DEMO_DAY
-    program_day = (date_of_connexion - program_date_launch).to_i
-    return program_day
-  end
+  # def get_program_day(current_user)
+  #   program_date_launch = Program.where(user: current_user).first.start_time
+  #   #current_user.program.start_time
+  #   date_of_connexion = Program::DEMO_DAY
+  #   program_day = (date_of_connexion - program_date_launch).to_i
+  #   return program_day
+  # end
 
 end

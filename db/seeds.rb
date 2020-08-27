@@ -219,4 +219,11 @@ romain_program_smokes.each_with_index do |smoke, index|
 end
 
 
+require 'program_seed_creator'
+
+# ProgramSeedCreator.new(user: pat, start_time: 2.months.ago, init_smoke: 25).create
+
+
+
+
 
