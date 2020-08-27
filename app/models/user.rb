@@ -20,4 +20,8 @@ class User < ApplicationRecord
     self.smokes.where(created_at: date).count
   end
 
+  def prepwork_smokes
+    self.smokes.where('created_at < ?' , Date.today)
+  end
+
 end

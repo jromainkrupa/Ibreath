@@ -1,55 +1,59 @@
-<div class="bg-gray-200">
-  <% days = {Mo: 0, Tu: 0, We: 0, Th: 0, Fr: 0, Sa: 0, Su: 0}%>
-  <% hours = Hash.new(0) %>
+<% days = {Mo: 0, Tu: 0, We: 0, Th: 0, Fr: 0, Sa: 0, Su: 0}%>
+<% hours = Hash.new(0) %>
+<% color_arc = ""%>
 
-  <div class="container flex flex-col justify-center items-center">
-    <h1 class="text-gray-800 font-semibold text-3xl">Your last week</h1>
+<% current_user.prepwork_smokes.each do |smoke| %>
+  <% if smoke.created_at.strftime("%A") == "Monday" %>
+    <% days[:Mo] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Tuesday" %>
+    <% days[:Tu] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Wednesday" %>
+    <% days[:We] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Thursday" %>
+    <% days[:Th] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Friday" %>
+    <% days[:Fr] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Saturday" %>
+    <% days[:Sa] += 1 %>
+  <% elsif smoke.created_at.strftime("%A") == "Sunday" %>
+    <% days[:Su] += 1 %>
+  <% end %>
+<% end %>
+
+<% current_user.prepwork_smokes.each do |smoke| %>
+  <% 23.times do |i| %>
+    <% if smoke.created_at.hour == i %>
+      <% hours[i] += 1 %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<div class="flex flex-col items-center">
+
+  <div class="flex flex-col items-center p-4">
+    <h1 class="text-gray-800 font-semibold text-3xl mb-12">Your last week</h1>
     <h2 class="text-gray-800 font-semibold text-xl">You smoked <span class="text-teal-500"><%= Smoke.where(user_id: current_user.id).count %></span> cigarettes this week</h2>
     <h2 class="text-gray-800 font-semibold text-xl"><span class="text-teal-500"><%= Smoke.where(user_id: current_user.id).count * 0.5%>€</span> gone in smoke</h2>
   </div>
 
-  <% Smoke.where(user_id: current_user.id).each do |smoke| %>
-    <% if smoke.created_at.strftime("%A") == "Monday" %>
-      <% days[:Mo] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Tuesday" %>
-      <% days[:Tu] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Wednesday" %>
-      <% days[:We] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Thursday" %>
-      <% days[:Th] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Friday" %>
-      <% days[:Fr] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Saturday" %>
-      <% days[:Sa] += 1 %>
-    <% elsif smoke.created_at.strftime("%A") == "Sunday" %>
-      <% days[:Su] += 1 %>
-    <% end %>
-  <% end %>
-
-  <% Smoke.where(user_id: current_user.id).each do |smoke| %>
-    <% if smoke.created_at.hour >= 6 && smoke.created_at.hour < 9 %>
-      <% hours[1] += 1 %>
-    <% elsif smoke.created_at.hour >= 9 && smoke.created_at.hour < 12 %>
-      <% hours[2] += 1 %>
-    <% elsif smoke.created_at.hour >= 12 && smoke.created_at.hour < 15 %>
-      <% hours[3] += 1 %>
-    <% elsif smoke.created_at.hour >= 15 && smoke.created_at.hour < 18 %>
-      <% hours[4] += 1 %>
-    <% elsif smoke.created_at.hour >= 18 && smoke.created_at.hour < 21 %>
-      <% hours[5] += 1 %>
-    <% elsif smoke.created_at.hour >= 21 && smoke.created_at.hour < 24 %>
-      <% hours[6] += 1 %>
-    <% end %>
-  <% end %>
-
-  <% color_arc = ""%>
-
-  <div class="container flex content-center items-end">
+  <div class="flex h-48 justify-center items-end p-4">
     <% days.each do |day, value| %>
-      <div class="w-8 mx-1 bg-teal-<%=(value/10.0).ceil * 100 + 300%> flex items-end justify-center text-white font-bold" style="height: calc(<%= value %>% * 3)"><%= day %></div>
+      <div class="w-10 mx-1 bg-teal-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc(<%= value %>% * 3)"><%= day %></div>
     <% end %>
   </div>
 
+  <h2 class="text-gray-800 font-semibold text-xl">Daily consumption</h2>
+
+  <div class="flex h-48 justify-center items-end p-4">
+    <% hours.first(14).each do |hour, value| %>
+      <div class="w-6 bg-teal-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc((<%= value %>% * 3 + 15px))"><%= hour %></div>
+    <% end %>
+  </div>
+
+  <h2 class="text-gray-800 font-semibold text-xl">Hourly consumption</h2>
+
+  <!--
   <div class='circle-stat'>
     <% 6.times do |i| %>
       <% if hours[i]/7 == 0 %>
@@ -74,4 +78,6 @@
       <div class='arc<%=i+1%>' style="--my-color-border: <%= color_arc %>;"> </div>
     <% end %>
   </div>
+  -->
+
 </div>
