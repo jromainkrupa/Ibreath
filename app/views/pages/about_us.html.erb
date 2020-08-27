@@ -23,9 +23,10 @@
   <div class="hidden md:block text-right">
     <span class="inline-flex rounded-md shadow-md">
       <span class="inline-flex rounded-md shadow-xs">
-        <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-green-500 bg-white hover:bg-gray-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out">
+<!--         <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-green-500 bg-white hover:bg-gray-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out">
           Log in
-        </a>
+        </a> -->
+        <%= link_to "Log in", new_user_session_path, class:"inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-green-500 bg-white hover:bg-gray-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out" %>
       </span>
     </span>
   </div>

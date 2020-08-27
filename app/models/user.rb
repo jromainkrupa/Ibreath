@@ -16,4 +16,8 @@ class User < ApplicationRecord
   has_many :smokes
   has_one :program
 
+  def get_number_of_smoke(date)
+    self.smokes.where(created_at: date).count
+  end
+
 end
