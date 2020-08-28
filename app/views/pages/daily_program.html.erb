@@ -27,7 +27,7 @@
 
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
         <div class="bg-blue-800 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl">25</strong>min</p>
+          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl"><%= current_user.program.get_spread(Date.current) %></strong>min</p>
         </div>
         <p class="text-blue-800 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
       </div>
