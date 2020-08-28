@@ -44,4 +44,7 @@ class User < ApplicationRecord
     end
   end
 
+  def average_smoke
+    (prepwork_smokes.count / 7).round
+  end
 end
