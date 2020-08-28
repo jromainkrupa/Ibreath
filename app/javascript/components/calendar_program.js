@@ -17,7 +17,8 @@ const calendarDay = () => {
         days.forEach(day => day.classList.remove("bg-blue-900"));
         day.classList.remove("bg-blue-900");
         day.classList.toggle("bg-blue-900");
-        dailyCigs.innerHTML = `Today you should smoke <span class="text-red-500">${parseInt(day.dataset.numCig, 10) + 1}</span> cigarettes`;
+
+        dailyCigs.innerHTML = `On that day you should smoke <span class="text-blue-500">${parseInt(day.dataset.numCig, 10) + 1}</span> cigarettes`;
       })
     )
   }

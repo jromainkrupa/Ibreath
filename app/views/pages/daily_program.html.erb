@@ -1,31 +1,36 @@
 <div class="container bg-indigo-700 h-screen flex flex-col justify-center items-center text-white">
   <div class="flex justify-center items-center py-16">
-    <h1 class="text-3xl font-bold"> <span class="text-5xl"> <%= @ar_program.number_of_days_of_program %></span><sup>th</sup> Day</h1>
+    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
   </div>
-  <div class="bg-white w-full shadow-md rounded-t-lg relative" style="height: 45em">
-    <p class="my-8 text-center text-xl text-black"><%= Date.current.strftime('%m/%d/%Y') %></p>
+
+  <div class="bg-white w-full shadow-md rounded-t-lg" style="height: 45em">
+    <p class="my-8 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
     <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
       <div class=" row-span-1 col-span-2 bg-red-500 shadow-md rounded-md flex flex-col justify-center">
         <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
-        <p class='text-white pl-4 leading-5 tracking-wide'>Today you still can smoke <br> <strong class="text-xl "><%= @ar_program.cigarette_allowed_for(Program::DEMO_DAY) %></strong> cigarettes today</p>
+        <p class='text-white pl-4 leading-5 tracking-wide'>You smoked: <strong><%= current_user.get_number_of_smoke(Date.current) %>/<%= current_user.program.cigarette_allowed_for(Date.current)%></strong></p>
+        <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong> <%= current_user.last_smoke.created_at.min %></strong> min</p>
       </div>
 
+<% Smoke.create(user: current_user, created_at: Date.current) %>
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
+
         <p class="text-orange-400 text-xl font-bold pl-4 pr-2">You <br> smocked</p>
         <div class="bg-orange-400 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Program::DEMO_DAY) %></strong> <br> cigarettes</p>
+          <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
         </div>
       </div>
 
       <div class="row-span-2 col-span-1 bg-indigo-700 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
        <p>Spared </p>
-       <p class="leading-5" style="font-size: 10rem;">5</p>
+       <p class="leading-5" style="font-size: 10rem;"><%= current_user.program.get_spread(Date.current) %></p>
        <p>cigarettes</p>
      </div>
 
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
+
         <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl">25</strong>min</p>
+          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl"><%= current_user.program.get_spread(Date.current) %></strong>min</p>
         </div>
         <p class="text-teal-300 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
       </div>

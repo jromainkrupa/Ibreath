@@ -51,33 +51,14 @@
     <% end %>
   </div>
 
-  <h2 class="text-gray-800 font-semibold text-xl">Daily consumption</h2>
+  <h2 class="text-gray-800 font-semibold text-xl mb-12">Daily consumption</h2>
 
-  <!--
-  <div class='circle-stat'>
-    <% 6.times do |i| %>
-      <% if hours[i]/7 == 0 %>
-        <% color_arc = "#E6FFFA" %>
-      <% elsif hours[i]/7 > 12 %>
-        <% color_arc = "#B2F5EA" %>
-      <% elsif hours[i]/7 > 10 %>
-        <% color_arc = "#81E6D9" %>
-      <% elsif hours[i]/7 > 8 %>
-        <% color_arc = "#4FD1C5" %>
-      <% elsif hours[i]/7 > 7 %>
-        <% color_arc = "#38B2AC" %>
-      <% elsif hours[i]/7 > 5 %>
-        <% color_arc = "#319795" %>
-      <% elsif hours[i]/7 > 3 %>
-        <% color_arc = "#2C7A7B" %>
-      <% elsif hours[i]/7 > 2 %>
-        <% color_arc = "#285E61" %>
-      <% elsif hours[i]/7 > 1 %>
-        <% color_arc = "#234E52" %>
-      <% end %>
-      <div class='arc<%=i+1%>' style="--my-color-border: <%= color_arc %>;"> </div>
-    <% end %>
+  <%= link_to "START", programs_path, method: "post", class:"w-8/12 h-16 flex justify-center items-center shadow-md bg-blue-800 uppercase text-white focus:bg-blue-900 font-bold mb-10 px-20 rounded-full" %>
+  <div class="w-24 flex justify-between pt-1 pb-3">
+    <i class="far fa-circle"></i>
+    <i class="fas fa-circle"></i>
+    <i class="far fa-circle"></i>
   </div>
-  -->
+
 
 </div>
