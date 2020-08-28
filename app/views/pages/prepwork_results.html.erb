@@ -47,7 +47,7 @@
 
   <div class="flex h-48 justify-center items-end p-4">
     <% hours.first(14).each do |hour, value| %>
-      <div class="w-6 bg-teal-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc((<%= value %>% * 3 + 15px))"><%= hour %></div>
+      <div class="w-6 bg-teal-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc((<%= value %>% * 3 + 25px))"><%= hour %></div>
     <% end %>
   </div>
 
