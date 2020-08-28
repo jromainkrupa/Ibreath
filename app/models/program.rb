@@ -28,6 +28,10 @@ class Program < ApplicationRecord
 
   end
 
+  def get_spared_cigarettes(date)
+    cigarette_allowed_for(date) - smoked_cigarette(date)
+  end
+
   def get_time_from_last_smoke_to_evening(date)
     #TIME_OF_EVENING - time_of_last_smoke(date)
   end
@@ -54,5 +58,17 @@ class Program < ApplicationRecord
       key
     end
     sorted_by_key_ar_of_ar.to_h
+  end
+
+  def get_day_ordanilizer(date)
+    if date.day == (1 || 21)
+      "st"
+    elsif date.day == (2 || 22)
+      "nd"
+    elsif date.day == (3 || 23)
+      "rd"
+    else
+      "th"
+    end
   end
 end
