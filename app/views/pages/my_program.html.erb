@@ -1,10 +1,43 @@
-<div class="container mx-auto flex flex-col h-screen overflow-auto items-center">
-  <h1 class="text-2xl py-4"><span class="text-gray-700">Your next</span> <span class="text-green-400"><strong>Month</strong></span></h1>
-  <div class="w-64 h-screen overflow-visible flex flex-col items-start">
-    <% @program.each do |number| %>
-      <div class="rounded relative flex items-center shadow-md <%= color_class_for_program(@program, number) %> h-4 mb-2" style="width: <%= 100 * number / @program.max %>%">
-        <p class=" text-gray-600 absolute right-0 transform text-sm translate-x-full pl-2"> <%= number %></p>
-      </div>
-    <% end %>
+<div class="flex flex-col items-center my-6">
+  <h1 class="text-gray-800 font-semibold text-3xl">Your <span class="text-blue-500">30 days</span></h1>
+  <h1 class="text-gray-800 font-semibold text-3xl">program</h1>
+</div>
+
+<div class="">
+  <div class="flex flex-col items-center">
+    <div class="flex">
+      <% 7.times do |i| %>
+        <div class="flex justify-center items-center w-10 h-10 bg-blue-500 text-white font-bold p-2 m-1 rounded shadow-md calendar-day" data-num-cig="<%=current_user.program.cigarette_allowed_for(current_user.program.start_time + (i+1))%>"><%= i+1 %></div>
+      <% end %>
+    </div>
+    <div class="flex">
+      <% 7.times do |i| %>
+        <div class="flex justify-center items-center w-10 h-10 bg-blue-500 text-white font-bold p-2 m-1 rounded shadow-md calendar-day" data-num-cig="<%=current_user.program.cigarette_allowed_for(current_user.program.start_time + (i+8))%>"><%= i+8 %></div>
+      <% end %>
+    </div>
+    <div class="flex">
+      <% 7.times do |i| %>
+        <div class="flex justify-center items-center w-10 h-10 bg-blue-500 text-white font-bold p-2 m-1 rounded shadow-md calendar-day" data-num-cig="<%=current_user.program.cigarette_allowed_for(current_user.program.start_time + (i+15))%>"><%= i+15 %></div>
+      <% end %>
+    </div>
+    <div class="flex">
+      <% 7.times do |i| %>
+        <div class="flex justify-center items-center w-10 h-10 bg-blue-500 text-white font-bold p-2 m-1 rounded shadow-md calendar-day" data-num-cig="<%=current_user.program.cigarette_allowed_for(current_user.program.start_time + (i+22))%>"><%= i+22 %></div>
+      <% end %>
+    </div>
   </div>
+  <div class="flex flex-col items-center justify-center ml-2 px-2">
+    <div class="flex justify-center">
+      <% 2.times do |i| %>
+        <div class="flex justify-center items-center w-10 h-10 bg-blue-500 text-white font-bold p-2 mr-2 mt-1 rounded shadow-md calendar-day" data-num-cig="<%=current_user.program.cigarette_allowed_for(current_user.program.start_time + (i+29))%>"><%= i+29 %></div>
+      <% end %>
+      <% 5.times do %>
+        <div class="w-12"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center">
+  <h2 id="daily-cigs" class="mt-5 text-gray-800 font-semibold text-lg">Touch a date to see more</h2>
 </div>

@@ -6,6 +6,7 @@ Program.destroy_all
 User.destroy_all
 puts "Users destruction...."
 
+
 caroline = User.create(
   first_name: 'caroline',
   last_name: 'Janin',
@@ -127,7 +128,7 @@ romain = User.create(
   )
 puts "let's set Romain prepwork"
 # We begin the prepwork for joseph
-init_date_time = DateTime.new(2020,7,6,9,00,00)
+init_date_time = DateTime.new(2020,8,10,9,00,00)
 puts "Day 1 consumption:"
 Smoke.create(user:romain, created_at: init_date_time)
 puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
@@ -181,7 +182,7 @@ end
 puts "////////////////////////////"
 puts "romain Programm is ready !!!"
 puts "////////////////////////////"
-program_date_launch_romain = DateTime.new(2020,7,13,9,30,15)
+program_date_launch_romain = DateTime.new(2020,8,17,9,30,15)
 puts "romain click on Launch #{program_date_launch_romain}"
 total_romain_smoke = Smoke.where(user: romain).count
 first_romain_smoke_date = Smoke.where(user: romain).first.created_at.to_datetime
@@ -216,6 +217,13 @@ romain_program_smokes.each_with_index do |smoke, index|
     puts "Day #{index + 1}: #{smoke} cigarettes with a spread #{(18.fdiv(smoke)*60).round}minutes"
   end
 end
+
+
+require 'program_seed_creator'
+
+# ProgramSeedCreator.new(user: pat, start_time: 2.months.ago, init_smoke: 25).create
+
+
 
 
 
