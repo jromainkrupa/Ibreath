@@ -1,8 +1,11 @@
-<h1>Pairing page</h1>
+<div class="container mx-auto flex flex-col h-screen overflow-auto items-center bg-gray-200">
 
-<h2>If you have your buddy click on pairing</h2>
-<input type="button" value="PAIRING" onclick="msg(sorry not available yet)">
-
-<h3>else</h3>
-
-<%= link_to "Start without devise", prepwork_path %>
+  <div id=mybtn class="flex-grow w-full flex items-center justify-center">
+    <div class="circle bg-teal-500" style="animation-delay: -3s"></div>
+    <div class="circle bg-teal-500" style="animation-delay: -2s"></div>
+    <div class="circle bg-teal-500" style="animation-delay: -1s"></div>
+    <div class="circle bg-teal-500" style="animation-delay: 0s"></div>
+  </div>
+  <p class="text-teal-500 mb-24 text-center text-3xl">Pairing...</p>
+  <%= link_to "Continue", tutorial_path, class:"w-8/12 shadow-md bg-blue-800 uppercase text-white focus:bg-blue-900 font-bold mb-20 px-20 rounded-full" %>
+</div>
