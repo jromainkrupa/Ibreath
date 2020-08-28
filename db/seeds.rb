@@ -100,7 +100,7 @@ puts "Joseph Programm is ready !!!"
 
 puts "////////////////////////////"
 
-joseph.user_status = "in_prepwork"
+joseph.user_status = "ready_to_launch"
 joseph.save
 
 puts "joseph status is now #{joseph.user_status}"

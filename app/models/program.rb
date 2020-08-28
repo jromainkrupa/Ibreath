@@ -55,4 +55,16 @@ class Program < ApplicationRecord
     end
     sorted_by_key_ar_of_ar.to_h
   end
+
+  def get_day_ordanilizer(date)
+    if date.day == (1 || 21)
+      "st"
+    elsif date.day == (2 || 22)
+      "nd"
+    elsif date.day == (3 || 23)
+      "rd"
+    else
+      "th"
+    end
+  end
 end
