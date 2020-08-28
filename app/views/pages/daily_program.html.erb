@@ -1,29 +1,53 @@
-<% current_user.program.get_most_important_smokes(Date.current).each do |key, value| %>
-  <p>We suggest you to smoke at: <%= key %>h  </p>
-<% end %>
-</p>
-
-<p>next opening: <%= current_user.program.get_spread(Date.current) %></p>
-
-
-<div class="container">
-  <div class="flex items-center">
-    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-    </svg>
-    <div class="text-center px-10">
-      <p><%= Date.current.strftime('%d %b') %></p>
-      <p>Day <%= current_user.program.number_of_days_of_program %></p>
-    </div>
-    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-    </svg>
+<div class="container bg-blue-500 h-screen flex flex-col justify-center items-center text-white">
+  <div class="flex justify-center items-center py-16">
+    <h1 class="text-3xl font-bold"> <span class="text-5xl"> <%= @ar_program.number_of_days_of_program %></span><sup>th</sup> Day</h1>
   </div>
+  <div class="bg-white w-full shadow-md rounded-t-lg" style="height: 45em">
+    <p class="my-8 text-center text-xl text-black"><%= Date.current.strftime('%m/%d/%Y') %></p>
+    <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
+      <div class=" row-span-1 col-span-2 bg-purple-500 shadow-md rounded-md flex flex-col justify-center">
+        <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
+        <p class='text-white pl-4 leading-5 tracking-wide'>Today you still can smoke <br> <strong class="text-xl "><%= @ar_program.cigarette_allowed_for(Program::DEMO_DAY) %></strong> cigarettes today</p>
+      </div>
+
+      <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
+        <p class="text-orange-500 text-xl font-bold pl-4 pr-2">You <br> smocked</p>
+        <div class="bg-orange-500 h-full w-7/12 rounded-md flex items-center justify-center">
+          <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Program::DEMO_DAY) %></strong> <br> cigarettes</p>
+        </div>
+      </div>
+
+      <div class="row-span-2 col-span-1 bg-red-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
+       <p>Spared </p>
+       <p class="leading-5" style="font-size: 10rem;">5</p>
+       <p>cigarettes</p>
+     </div>
+
+      <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
+        <div class="bg-blue-800 h-full w-7/12 rounded-md flex items-center justify-center">
+          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl">25</strong>min</p>
+        </div>
+        <p class="text-blue-800 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
+      </div>
+      <!-- <div class="row-span-1 col-span-1 bg-blue-800 shadow-md rounded-md flex justify-between">
+        <p class="text-white">25min</p>
+        <div class="bg-white text-blue-800">
+          <p>Next opening</p>
+        </div>
+      </div>
+ -->
+
+    </div>
+  </div>
+
 </div>
 
-
-<p class='text-center'>You can smoke <strong><%= @ar_program.cigarette_allowed_for(Date.current) %></strong> cigarettes today</p>
-
+<!--
+<%= link_to "Today", daily_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+<%= link_to "Stats", prepwork_results_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+<%= link_to "Program", my_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
+      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
 
 <%# Smoke.create(user:current_user, created_at: Date.current) %>
 
@@ -43,3 +67,4 @@
 
 
 
+-->
