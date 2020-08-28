@@ -28,6 +28,10 @@ class Program < ApplicationRecord
 
   end
 
+  def get_spared_cigarettes(date)
+    cigarette_allowed_for(date) - smoked_cigarette(date)
+  end
+
   def get_time_from_last_smoke_to_evening(date)
     #TIME_OF_EVENING - time_of_last_smoke(date)
   end

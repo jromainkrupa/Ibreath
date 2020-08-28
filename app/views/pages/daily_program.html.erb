@@ -21,7 +21,7 @@
 
       <div class="row-span-2 col-span-1 bg-red-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
        <p>Spared </p>
-       <p class="leading-5" style="font-size: 10rem;">5</p>
+       <p class="leading-5" style="font-size: 10rem;"><%= current_user.program.get_spread(Date.current) %></p>
        <p>cigarettes</p>
      </div>
 
