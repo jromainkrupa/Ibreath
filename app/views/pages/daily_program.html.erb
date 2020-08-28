@@ -1,3 +1,4 @@
+<% Smoke.create(user: current_user, created_at: DateTime.current) %>
 <div class="container bg-indigo-700 h-screen flex flex-col justify-center items-center text-white">
   <div class="flex justify-center items-center py-16">
     <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
@@ -12,10 +13,9 @@
         <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong> <%= current_user.last_smoke.created_at.min %></strong> min</p>
       </div>
 
-<% Smoke.create(user: current_user, created_at: Date.current) %>
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
 
-        <p class="text-orange-400 text-xl font-bold pl-4 pr-2">You <br> smocked</p>
+        <p class="text-orange-400 text-xl font-bold pl-4 pr-2">You <br> smoked</p>
         <div class="bg-orange-400 h-full w-7/12 rounded-md flex items-center justify-center">
           <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
         </div>
@@ -23,7 +23,7 @@
 
       <div class="row-span-2 col-span-1 bg-indigo-700 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
        <p>Spared </p>
-       <p class="leading-5" style="font-size: 10rem;"><%= current_user.program.get_spread(Date.current) %></p>
+       <p class="leading-5" style="font-size: 10rem;"><%= current_user.program.get_spared_cigarettes(Date.current) %></p>
        <p>cigarettes</p>
      </div>
 

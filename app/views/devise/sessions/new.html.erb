@@ -1,6 +1,6 @@
 <div class="container flex flex-col h-screen overflow-auto bg-gray-200">
   <div class="flex flex-col items-center flex-grow">
-    <h2 class="text-teal-500 text-2xl py-24">Sign in</h2>
+    <h2 class="text-indigo-700 text-2xl py-24">Sign in</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs w-screen">
         <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded flex items-center">
@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-actions text-center">
-        <%= f.button :submit, "SIGN IN", class: "shadow-md mt-20 py-3 px-16 bg-teal-500 rounded-full text-white text-xs font-semibold" %>
+        <%= f.button :submit, "SIGN IN", class: "shadow-md mt-20 py-3 px-16 bg-indigo-700 rounded-full text-white text-xs font-semibold" %>
       </div>
     <% end %>
 

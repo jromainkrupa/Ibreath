@@ -29,7 +29,7 @@ class Program < ApplicationRecord
   end
 
   def get_spared_cigarettes(date)
-    cigarette_allowed_for(date) - smoked_cigarette(date)
+    cigarette_allowed_for(date) - smoked_cigarette(date).count
   end
 
   def get_time_from_last_smoke_to_evening(date)
@@ -41,7 +41,7 @@ class Program < ApplicationRecord
   end
 
   def get_spread(date)
-    ((Time.now.at_end_of_day - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)).fdiv(60).round()
+    ((Time.now.at_end_of_day - 2.hours - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)).fdiv(60).round()
   end
 
   def smoked_cigarette(date)

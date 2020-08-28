@@ -7,7 +7,7 @@ class PagesController < ApplicationController
       when current_user.user_status == "pairing_done" || current_user.user_status == "in_prepwork"
         redirect_to :prepwork
       when current_user.user_status == "ready_to_launch"
-        redirect_to :prepwork_results
+        redirect_to :tutorial
       when current_user.user_status == "in_program"
         redirect_to :daily_program
       else
