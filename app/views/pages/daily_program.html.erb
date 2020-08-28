@@ -1,4 +1,4 @@
-<% Smoke.create(user: current_user, created_at: DateTime.current) %>
+<% Smoke.create(user: current_user) %>
 <div class="container bg-indigo-700 h-screen flex flex-col justify-center items-center text-white">
   <div class="flex justify-center items-center py-16">
     <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
@@ -10,7 +10,7 @@
       <div class=" row-span-1 col-span-2 bg-red-500 shadow-md rounded-md flex flex-col justify-center">
         <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
         <p class='text-white pl-4 leading-5 tracking-wide'>You smoked: <strong><%= current_user.get_number_of_smoke(Date.current) %>/<%= current_user.program.cigarette_allowed_for(Date.current)%></strong></p>
-        <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong> <%= current_user.last_smoke.created_at.min %></strong> min</p>
+        <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong><%= time_ago_in_words(current_user.last_smoke.created_at) %></strong> ago</p>
       </div>
 
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
@@ -30,7 +30,7 @@
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
 
         <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl"><%= current_user.program.get_spread(Date.current) %></strong>min</p>
+          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl"><%= distance_of_time_in_words(0, current_user.program.get_spread(Date.current).to_f, scope: 'datetime.distance_in_words.short') %></strong></p>
         </div>
         <p class="text-teal-300 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
       </div>

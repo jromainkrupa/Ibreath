@@ -41,7 +41,13 @@ class Program < ApplicationRecord
   end
 
   def get_spread(date)
-    ((Time.now.at_end_of_day - 2.hours - user.last_smoke.created_at) / (cigarette_allowed_for(date) - smoked_cigarette(date).count)).fdiv(60).round()
+    remaining_cigarettes = cigarette_allowed_for(date) - smoked_cigarette(date).count
+
+    if remaining_cigarettes > 0
+      ((Time.now.at_end_of_day - 2.hours - user.last_smoke.created_at) / remaining_cigarettes).to_f.round()
+    else
+      nil
+    end
   end
 
   def smoked_cigarette(date)
