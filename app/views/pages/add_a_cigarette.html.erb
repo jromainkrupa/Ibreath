@@ -1,0 +1,19 @@
+<div class="h-32 bg-indigo-700 w-screen flex flex-row justify-between items-center text-white">
+  <p class="ml-4">Cancel</p>
+  <h1 class="leading-tight text-3xl text-center">Add <br>cigarette</h1>
+  <p class="mr-4">Save</p>
+</div>
+
+<div class="svg-container">
+  <div class="datas-a">
+    <p><span class="smoked-a"><%= current_user.program.smoked_cigarette(Date.current).count%></span><span class="text-4xl"> / </span><span class="allowed-a"><%= current_user.program.cigarette_allowed_for(Date.current) %></span></p>
+  </div>
+  <div class="svg-clope">
+  <svg xmlns="http://www.w3.org/2000/svg" width="136.873" height="320.207" viewBox="0 0 136.873 320.207"><defs><style>.a{fill:#474eaf;}</style></defs><g transform="translate(-72.221 -242.887)"><g transform="translate(-24.388 563.094) rotate(-90)"><g transform="translate(0 187.782)"><rect class="a" width="64.227" height="45.699"/></g><g transform="translate(79.766 187.782)"><rect class="a" width="148.136" height="45.699"/></g><g transform="translate(243.44 187.782)"><rect class="a" width="21.754" height="45.699"/></g><g transform="translate(320.207 96.609) rotate(90)"><path class="a" d="M53.695,85.808H23.653a8.115,8.115,0,0,1,0-16.229H55.594a23.135,23.135,0,1,0,0-46.271H23.308a7.778,7.778,0,0,1-7.77-7.769V0H0V15.539A23.334,23.334,0,0,0,23.308,38.847H55.594a7.6,7.6,0,1,1,0,15.193H23.653a23.653,23.653,0,0,0,0,47.307H53.695a9.507,9.507,0,0,1,9.5,9.5v2.244H78.729v-2.244A25.064,25.064,0,0,0,53.695,85.808Z"/></g></g></g></svg>
+  </div>
+  <div class="button-container">
+    <svg id="delete-btn" xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74"><defs><style>.a{fill:#474eaf;}.b{fill:#4850b2;}</style></defs><path class="a" d="M59.747,10.253A35,35,0,1,0,10.253,59.747,35,35,0,1,0,59.747,10.253ZM56.934,56.934A31.019,31.019,0,0,1,13.066,13.066,31.019,31.019,0,1,1,56.934,56.934Z"/><path class="b" d="M160.356,129.511a1.983,1.983,0,0,0-2.814,0L144.934,142.12l-12.609-12.609a1.989,1.989,0,0,0-2.814,2.814l12.609,12.609-12.609,12.609a2,2,0,0,0,1.4,3.4,1.941,1.941,0,0,0,1.4-.589l12.609-12.609,12.609,12.609a2,2,0,0,0,1.4.589,1.917,1.917,0,0,0,1.4-.589,1.983,1.983,0,0,0,0-2.814l-12.58-12.609,12.609-12.609A1.983,1.983,0,0,0,160.356,129.511Z" transform="translate(-109.934 -109.934)"/></svg>
+    <svg id="add-btn" xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74"><defs><style>.a{fill:#474eaf;}</style></defs><path class="a" d="M63.163,10.837A37,37,0,0,0,10.837,63.163,37,37,0,0,0,63.163,10.837ZM37,68.219A31.219,31.219,0,1,1,68.219,37,31.254,31.254,0,0,1,37,68.219Zm2.891-34.112H52.9v5.781H39.891V52.9H34.109V39.888H21.1V34.107H34.109V21.1h5.781Zm0,0"/></svg>
+  </div>
+</div>
+
