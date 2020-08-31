@@ -47,6 +47,9 @@ class PagesController < ApplicationController
   def calendar
   end
 
+  def add_a_cigarette
+  end
+
   def prepwork_results
     render "pages/prepwork_results"
   end
