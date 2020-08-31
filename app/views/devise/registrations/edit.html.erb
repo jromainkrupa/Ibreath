@@ -2,9 +2,9 @@
 
   <div class="container h-screen bg-white">
     <div class=" flex text-indigo-700 text-3xl border-b border-solid border-gray-500 justify-around py-6">
-      <div class="w-10"></div>
+      <div class="w-11"></div>
       <h1 class="font-bold text-center leading-none">Modify <br> your profile</h1>
-      <%= f.button :submit, "Save", class:"text-xl w-10 flex items-center bg-white" %>
+      <%= f.button :submit, "Save", class:"text-xl w-11 flex items-center bg-white" %>
       <%#= link_to "Save", user_registration_path, class:"text-xl w-10 flex items-center" %>
     </div>
 
@@ -51,6 +51,8 @@
     <%= link_to "Log out", destroy_user_session_path, :method => :delete, class:"flex justify-center text-indigo-700 text-xl mt-8" %>
   </div>
 <% end %>
+
+<%= render "pages/shared/tabbar" %>
 
 
 
