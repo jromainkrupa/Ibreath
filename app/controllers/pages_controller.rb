@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  ACTION_WITH_SWAG_BUTTONS = %w[home statistics calendar daily_program]
+
+  layout Proc.new { |controller| (controller.action_name.in? ACTION_WITH_SWAG_BUTTONS) ? 'in_program' : 'application' }
+
   def home
     if current_user
       case
@@ -18,45 +22,11 @@ class PagesController < ApplicationController
     end
   end
 
-  def pairing
-    # redirect_to root_path unless current_user.created?
-
-    # render "pages/pairing"
-  end
-
-  def about_us
-    render "pages/about_us"
-  end
-
-  def tutorial
-
-    render "pages/tutorial"
-  end
-
   def prepwork
     @smokes = Smoke.where(user_id: current_user.id) # add created add
     render "pages/prepwork"
 
     # if current_user.created_at > 1 semaine render program is ready
-  end
-
-  def program_launch
-    render "pages/program_launch"
-  end
-
-  def calendar
-  end
-
-  def add_a_cigarette
-  end
-
-  def prepwork_results
-    render "pages/prepwork_results"
-  end
-
-  def my_program
-    #redirect_to root_path unless current_user.prepwork_results?
-    render "pages/my_program"
   end
 
   def daily_program
