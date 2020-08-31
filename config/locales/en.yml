@@ -41,7 +41,7 @@ en:
           one: 'Soon'
           other: '%{count} mn'
         about_x_hours:
-          one: 'Dans 1h'
-          other: 'dans %{count}h'
+          one: 'in 1h'
+          other: 'in %{count}h'
 
 
