@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/program-launch', to: 'pages#program_launch'
   get '/prepwork-results', to: 'pages#prepwork_results'
   get '/my-program', to: 'pages#my_program'
+  get '/calendar', to: 'pages#calendar'
   get '/daily_program', to: 'pages#daily_program'
   get '/statistics', to: 'pages#statistics'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

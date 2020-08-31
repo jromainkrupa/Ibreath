@@ -44,6 +44,9 @@ class PagesController < ApplicationController
     render "pages/program_launch"
   end
 
+  def calendar
+  end
+
   def prepwork_results
     render "pages/prepwork_results"
   end
@@ -60,6 +63,7 @@ class PagesController < ApplicationController
     # @program = get_smoking_program(current_user)
     render "pages/daily_program"
   end
+
 
   private
 
