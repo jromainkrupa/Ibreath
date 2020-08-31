@@ -1,0 +1,63 @@
+.screen {
+  background: black;
+  display: inline-block;
+}
+#app {
+  height: 256px;
+  width: 256px;
+}
+@-webkit-keyframes RingProgress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+@keyframes RingProgress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+.ActivityRings {
+  height: 100%;
+  width: 100%;
+}
+.ActivityRings .ring {
+  -webkit-transform-origin: 50%;
+          transform-origin: 50%;
+}
+.ActivityRings .completed {
+  -webkit-animation: RingProgress 1s ease-in-out forwards;
+          animation: RingProgress 1s ease-in-out forwards;
+  stroke-linecap: round;
+}
+.ActivityRings circle {
+  fill: none;
+}
+.ring1 .background {
+  stroke: rgba(128, 231, 217, 0.2);
+}
+.ring1 .completed {
+  stroke: #80E7D9;
+}
+.ring2 .background {
+  stroke: rgba(245, 101, 101, 0.2);
+}
+.ring2 .completed {
+  stroke: #F56565;
+}
+.ring3 .background {
+  stroke: rgba(0, 147, 237, 0.2);
+}
+.ring3 .completed {
+  stroke: #0093ED;
+}
+
+
+
+
+
+
+
+
+
+
+
