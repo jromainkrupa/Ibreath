@@ -3,7 +3,7 @@
     <h2 class="text-indigo-700 text-2xl py-24">Sign in</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs w-screen">
-        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded flex items-center">
+        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
           <i class="far fa-envelope text-gray-500"></i>
           <%= f.input :email,
                 required: false,
@@ -12,7 +12,7 @@
                 label: false,
                 placeholder: "Email" %>
         </div>
-        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded flex items-center">
+        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
           <i class="fas fa-unlock text-gray-500"></i>
           <%= f.input :password,
                       required: false,
@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-actions text-center">
-        <%= f.button :submit, "SIGN IN", class: "shadow-md mt-20 py-3 px-16 bg-indigo-700 rounded-full text-white text-xs font-semibold" %>
+        <%= f.button :submit, "SIGN IN", class: "shadow-md mt-20 py-3 px-16 bg-indigo-700 rounded-md text-white text-xs font-semibold" %>
       </div>
     <% end %>
 

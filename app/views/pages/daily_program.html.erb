@@ -7,7 +7,7 @@
   <div class="bg-white w-full shadow-md rounded-t-lg" style="height: 45em">
     <p class="my-8 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
     <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
-      <div class=" row-span-1 col-span-2 bg-red-500 shadow-md rounded-md flex flex-col justify-center">
+      <div class=" row-span-1 col-span-2 bg-indigo-500 shadow-md rounded-md flex flex-col justify-center">
         <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
         <p class='text-white pl-4 leading-5 tracking-wide'>You smoked: <strong><%= current_user.get_number_of_smoke(Date.current) %>/<%= current_user.program.cigarette_allowed_for(Date.current)%></strong></p>
         <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong><%= time_ago_in_words(current_user.last_smoke.created_at) %></strong> ago</p>
@@ -15,15 +15,15 @@
 
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
 
-        <p class="text-orange-400 text-xl font-bold pl-4 pr-2">You <br> smoked</p>
-        <div class="bg-orange-400 h-full w-7/12 rounded-md flex items-center justify-center">
+        <p class="text-purple-400 text-xl font-bold pl-4 pr-2">You <br> smoked</p>
+        <div class="bg-purple-400 h-full w-7/12 rounded-md flex items-center justify-center">
           <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
         </div>
       </div>
 
-      <div class="row-span-2 col-span-1 bg-indigo-700 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
+      <div class="row-span-2 col-span-1 bg-green-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
        <p>Spared </p>
-       <p class="leading-5" style="font-size: 10rem;"><%= current_user.program.get_spared_cigarettes(Date.current) %></p>
+       <p class="leading-5" style="font-size: 8rem;"><%= current_user.program.get_spared_cigarettes(Date.current) %></p>
        <p>cigarettes</p>
      </div>
 
@@ -35,34 +35,7 @@
         <p class="text-teal-300 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
       </div>
     </div>
-    <div class="bg-indigo-700 tabbar fixed bottom-0 flex justify-around text-white py-2 mx-4 mb-4 shadow-lg rounded-md">
-      <%= link_to daily_program_path, class:"w-6 flex items-center flex-col" do %>
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-        <p>Home</p>
-      <% end %>
-
-      <%= link_to prepwork_results_path,  class:"w-6 flex items-center flex-col" do %>
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-        Stats
-      <% end %>
-
-      <%= link_to my_program_path, class:"w-6 flex items-center flex-col" do %>
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Calendar
-      <% end %>
-      <%= link_to my_program_path, class:"w-6 flex items-center flex-col" do %>
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-        Profil
-      <% end %>
-    </div>
+    <%= render "/pages/shared/tabbar" %>
   </div>
 </div>
 
