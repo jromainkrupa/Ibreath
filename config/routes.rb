@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/calendar', to: 'pages#calendar'
   get '/daily_program', to: 'pages#daily_program'
   get '/statistics', to: 'pages#statistics'
+  post '/unlock', to: 'case#unlock'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :smokes, only: [:create, :destroy, :new]
   resources :programs, only: [:create, :show]

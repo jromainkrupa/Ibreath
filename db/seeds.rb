@@ -5,7 +5,7 @@ puts "Smokes destruction...."
 Program.destroy_all
 User.destroy_all
 puts "Users destruction...."
-
+Case.destroy_all
 
 caroline = User.create(
   first_name: 'caroline',
@@ -223,7 +223,7 @@ require 'program_seed_creator'
 
 # ProgramSeedCreator.new(user: pat, start_time: 2.months.ago, init_smoke: 25).create
 
-
+Case.create
 
 
 
