@@ -9,5 +9,8 @@ class SmokesController < ApplicationController
   end
 
   def destroy
+    @smoke = Smoke.last
+    @smoke.destroy
+    redirect_to add_a_cigarette_path
   end
 end
