@@ -1,8 +1,4 @@
 class PagesController < ApplicationController
-  ACTION_WITH_SWAG_BUTTONS = %w[statistics calendar daily_program my_profile]
-
-  layout Proc.new { |controller| (controller.action_name.in? ACTION_WITH_SWAG_BUTTONS) ? 'in_program' : 'application' }
-
   def home
     if current_user
       case
