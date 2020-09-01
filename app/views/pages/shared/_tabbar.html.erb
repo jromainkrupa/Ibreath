@@ -1,48 +1,49 @@
-<div class="bg-indigo-700 tabbar fixed bottom-0 flex justify-around text-white py-2 shadow-lg rounded-t-md w-full">
-  <%= link_to daily_program_path, class:"w-6 flex items-center flex-col #{'text-red-500' if params[:action] == 'daily_program'}" do %>
+<%= params[:action] %>
+
+<div class="bg-indigo-700 tabbar fixed bottom-0 flex justify-around text-gray-400 py-2 shadow-lg rounded-t-md w-full">
+  <%= link_to daily_program_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'daily_program'}" do %>
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
     </svg>
     <p>Home</p>
   <% end %>
 
-  <%= link_to calendar_path, class:"w-6 flex items-center flex-col #{'text-red-500' if params[:action] == 'calendar'}" do %>
+  <%= link_to calendar_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'calendar'}" do %>
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
     Calendar
     <% end %>
 
-  <%= link_to statistics_path,  class:"w-6 flex items-center flex-col #{'text-red-500' if params[:action] == 'statistics'}" do %>
+  <%= link_to statistics_path,  class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'statistics'}" do %>
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
     </svg>
     Stats
   <% end %>
 
-
-  <%= link_to edit_user_registration_path, class:"w-6 flex items-center flex-col #{'text-red-500' if params[:action] == 'edit_user_registration'}" do %>
+  <%= link_to trophies_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'trophies'}" do %>
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 0 595.3 595.3" enable-background="new 0 0 595.3 595.3" xml:space="preserve">
     <g>
-      <polygon fill="#fff" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" points="275.7,508 275.7,382.4 299.5,386.3
+      <polygon fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-miterlimit="10" points="275.7,508 275.7,382.4 299.5,386.3
         323.3,382.4 323.3,508   "/>
-      <path fill="#fff" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-miterlimit="10" d="M136.2,79
+      <path fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-miterlimit="10" d="M136.2,79
         c0,0-82.2-41.1-81.9,39.4c0,0-0.8,71.1,45.6,129.4c0,0,36.2,51.4,98.9,71c0,0-17.4-26.8-26.1-47.2c0,0-57-32.4-77.5-99.2
         c0,0-36.2-91.7,40.9-59.1V79H136.2z"/>
-      <path fill="#fff" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" d="M299.5,386.3c41.3,0,75.6-37.3,75.6-37.3
+      <path fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-miterlimit="10" d="M299.5,386.3c41.3,0,75.6-37.3,75.6-37.3
         c42.5-42.9,65.7-115.7,65.7-115.7C471.1,154,460,31.4,460,31.4H299.5H138.9c0,0-11,122.6,19.3,201.9c0,0,23.2,72.9,65.7,115.7
         C223.9,349,258.2,386.3,299.5,386.3z"/>
-      <path fill="#fff" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-miterlimit="10" d="M463.3,79
+      <path fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-miterlimit="10" d="M463.3,79
         c0,0,82.2-41.1,81.9,39.4c0,0,0.8,71.1-45.6,129.4c0,0-36.2,51.4-98.9,71c0,0,17.4-26.8,26.1-47.2c0,0,57-32.4,77.5-99.2
         c0,0,36.2-91.7-40.9-59.1V79H463.3z"/>
-      <rect x="156.5" y="523.4" fill="#fff" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" width="285.9" height="41.6"/>
-      <rect x="250.5" y="508" fill="#fff" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" width="98" height="15.4"/>
+      <rect x="156.5" y="523.4" fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-miterlimit="10" width="285.9" height="41.6"/>
+      <rect x="250.5" y="508" fill=<%= params[:action] == "trophies" ? "white" : "#cbd5e0" %> stroke="currentColor" stroke-width="4" stroke-miterlimit="10" width="98" height="15.4"/>
     </g>
     </svg>
     Trophies
   <% end %>
-  <%= link_to edit_user_registration_path, class:"w-6 flex items-center flex-col #{'bg-red-300' if params[:action] == 'edit_user_registration'}" do %>
+  <%= link_to edit_user_registration_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:controller] == "devise/registrations" && params[:action] == "edit"}" do %>
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
     </svg>
