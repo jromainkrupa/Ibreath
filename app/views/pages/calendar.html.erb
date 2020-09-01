@@ -6,10 +6,22 @@
 <div class="pl-4 pr-4 w-full">
   <div class="grid grid-flow-row grid-cols-5 grid-rows-6 gap-2">
     <% 30.times do |i| %>
-    <div class="day-container">
-        <h6 class="day-title">Day <%= i + 1 %></h6>
-        <div class="datas">
-          <p><span class="smoked"><%= current_user.get_number_of_smoke(start + i.day)%>/</span> <span class="allowed"><%= current_user.program.cigarette_allowed_for(start + i.day) %></span></p>
+    <% smoked_smokes = current_user.get_number_of_smoke(start + i.day) %>
+    <% allowed_smokes = current_user.program.cigarette_allowed_for(start + i.day) %>
+    <% if current_user.program.number_of_days_of_program > i + 1 %>
+      <% if smoked_smokes > allowed_smokes %>
+        <div class="day-container bg-gray-200 shadow-red rounded-md">
+      <% else %>
+        <div class="day-container bg-gray-200 shadow-green rounded-md">
+      <% end %>
+    <% elsif current_user.program.number_of_days_of_program == i + 1 %>
+      <div class="day-container bg-white rounded-md shadow-md">
+    <% else %>
+      <div class="day-container rounded-md border border-gray-200 shadow-md">
+    <% end %>
+          <h6 class="day-title pt-1 text-gray-800">Day <%= i + 1 %></h6>
+          <div class="datas">
+          <p><span class="smoked text-gray-700"><%= current_user.get_number_of_smoke(start + i.day + 1) %> /</span> <span class="allowed text-gray-700"><%= current_user.program.cigarette_allowed_for(start + i.day + 1) %></span></p>
         </div>
     </div>
     <% end %>
