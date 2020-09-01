@@ -1,4 +1,4 @@
-<% start = current_user.program.start_time %>
+<%= start = current_user.program.start_time %>
 <div class="flex flex-col items-center my-6">
   <h1 class="text-gray-800 font-semibold text-3xl">Your <span class="text-indigo-700">30 days</span></h1>
 </div>
@@ -9,7 +9,7 @@
     <div class="day-container">
         <h6 class="day-title">Day <%= i + 1 %></h6>
         <div class="datas">
-          <p><span class="smoked"><%= current_user.program.smoked_cigarette(start + i.day).count%>/</span> <span class="allowed"><%= current_user.program.cigarette_allowed_for(start + i.day) %></span></p>
+          <p><span class="smoked"><%= current_user.get_number_of_smoke(start + i.day)%>/</span> <span class="allowed"><%= current_user.program.cigarette_allowed_for(start + i.day) %></span></p>
         </div>
     </div>
     <% end %>

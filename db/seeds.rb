@@ -182,8 +182,9 @@ end
 puts "////////////////////////////"
 puts "romain Programm is ready !!!"
 puts "////////////////////////////"
+
 program_date_launch_romain = DateTime.new(2020,8,17,9,30,15)
-puts "romain click on Launch #{program_date_launch_romain}"
+
 total_romain_smoke = Smoke.where(user: romain).count
 first_romain_smoke_date = Smoke.where(user: romain).first.created_at.to_datetime
 day_of_prepwork_romain = (program_date_launch_romain - first_romain_smoke_date).round
@@ -217,6 +218,15 @@ romain_program_smokes.each_with_index do |smoke, index|
     puts "Day #{index + 1}: #{smoke} cigarettes with a spread #{(18.fdiv(smoke)*60).round}minutes"
   end
 end
+
+14.times do |i|
+  Smoke.create(user:romain, created_at: program_date_launch_romain + i.hours)
+end
+
+14.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 1.day + i.hours)
+end
+
 
 
 require 'program_seed_creator'
