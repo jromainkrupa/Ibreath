@@ -29,32 +29,33 @@
 <% end %>
 
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center bg-gray-100">
 
-  <div class="flex flex-col items-center p-4">
-    <h1 class="text-gray-800 font-semibold text-3xl mb-12">Your last week</h1>
-    <h2 class="text-gray-800 font-semibold text-xl">You smoked <span class="text-red-500"><%= Smoke.where(user_id: current_user.id).count %></span> cigarettes this week</h2>
-    <h2 class="text-gray-800 font-semibold text-xl"><span class="text-red-500"><%= Smoke.where(user_id: current_user.id).count * 0.5%>€</span> gone in smoke</h2>
+  <div class="flex flex-col items-center pt-4">
+    <h1 class="text-indigo-700 font-semibold text-3xl mb-12">Your last week</h1>
   </div>
-
-  <div class="flex h-48 justify-center items-end p-4">
+  <div class="shadow-lg m-4 p-2 w-11/12 rounded-lg bg-white"%>
+    <h2 class="text-gray-700 font-semibold text-xl">You smoked <span class="text-red-500"><%= Smoke.where(user_id: current_user.id).count %></span> cigarettes <br> this week</h2>
+    <h2 class="text-gray-700 font-semibold text-xl"><span class="text-red-500"><%= Smoke.where(user_id: current_user.id).count * 0.5%>€</span> gone in smoke</h2>
+  </div>
+  <div class="flex h-48 justify-center items-end p-2 bg-white m-4 shadow-lg rounded-lg">
     <% days.each do |day, value| %>
       <div class="w-10 mx-1 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc(<%= value %>% * 3)"><%= day %></div>
     <% end %>
   </div>
 
-  <h2 class="text-gray-800 font-semibold text-xl">Weekly consumption</h2>
+  <h2 class="text-orange-400 font-semibold text-xl">Weekly consumption</h2>
 
-  <div class="flex h-48 justify-center items-end p-4">
+  <div class="flex h-48 justify-center items-end p-2 bg-white m-4 shadow-lg rounded-lg">
     <% hours.first(14).each do |hour, value| %>
       <div class="w-6 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc((<%= value %>% * 3 + 25px))"><%= hour %></div>
     <% end %>
   </div>
 
-  <h2 class="text-gray-800 font-semibold text-xl mb-12">Daily consumption</h2>
+  <h2 class="text-orange-400 font-semibold text-xl mb-12">Daily consumption</h2>
 
-  <%= link_to "START", programs_path, method: :post, class:"w-8/12 h-16 flex justify-center items-center shadow-md bg-blue-800 uppercase text-white focus:bg-blue-900 font-bold mb-10 px-20 rounded-md" %>
-  <div class="w-24 flex justify-between pt-1 pb-3">
+  <%= link_to "START", programs_path, method: :post, class:"w-6/12 h-12 flex justify-center items-center shadow-md bg-indigo-700 uppercase text-white focus:bg-blue-900 font-bold mb-10 px-12 rounded-md" %>
+  <div class="w-24 flex justify-between pt-1 pb-3 text-gray-800">
     <i class="far fa-circle"></i>
     <i class="fas fa-circle"></i>
     <i class="far fa-circle"></i>
