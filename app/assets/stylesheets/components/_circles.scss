@@ -1,63 +1,77 @@
-.screen {
-  background: black;
-  display: inline-block;
+wrapper {
+  position: absolute;
+  width: 4em;
+  height: 4em;
+  left: calc(50% - 2em);
 }
-#app {
-  height: 256px;
-  width: 256px;
+.wedge {
+  animation: rotate 4s infinite linear;
+  width: 4em;
+  height: 2em;
 }
-@-webkit-keyframes RingProgress {
-  0% {
-    stroke-dasharray: 0 100;
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
   }
 }
-@keyframes RingProgress {
-  0% {
-    stroke-dasharray: 0 100;
+.dial-container {
+  position: absolute;
+  top: 0;
+  left: 0em;
+  width: 4em;
+  height: 2em;
+  overflow: hidden;
+}
+.container1 {
+  left: 0em;
+}
+.container1 .wedge {
+  animation: rotate-bg-1 4s ease-in-out forwards;
+  border-radius: 4em 4em 0em 0em;
+  left: 0;
+  transform-origin: 50% 100%;
+  background-color: #F56565;
+}
+.wrapper::after {
+  content: "";
+  background: #fff;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+}
+.marker {
+  border-radius: 50%;
+  height: 0.5em;
+  width: 0.5em;
+  position: absolute;
+  top: calc(0% + 2em - 0.25em);
+
+}
+.start {
+  background: white;
+  left: calc(0% + 4em - 0.5em);
+}
+.end {
+  animation: rotate-marker 4s ease-in-out forwards;
+  transform-origin: 2em 50%;
+  background: #F56565;
+  left: 0;
+}
+
+/* the values of angle need to be set with ruby*/
+@keyframes rotate-marker {
+  100% {
+    transform: rotateZ(120deg);
   }
 }
-.ActivityRings {
-  height: 100%;
-  width: 100%;
-}
-.ActivityRings .ring {
-  -webkit-transform-origin: 50%;
-          transform-origin: 50%;
-}
-.ActivityRings .completed {
-  -webkit-animation: RingProgress 1s ease-in-out forwards;
-          animation: RingProgress 1s ease-in-out forwards;
-  stroke-linecap: round;
-}
-.ActivityRings circle {
-  fill: none;
-}
-.ring1 .background {
-  stroke: rgba(128, 231, 217, 0.2);
-}
-.ring1 .completed {
-  stroke: #80E7D9;
-}
-.ring2 .background {
-  stroke: rgba(245, 101, 101, 0.2);
-}
-.ring2 .completed {
-  stroke: #F56565;
-}
-.ring3 .background {
-  stroke: rgba(0, 147, 237, 0.2);
-}
-.ring3 .completed {
-  stroke: #0093ED;
-}
 
-
-
-
-
-
-
-
-
-
+/* First animation moves 180 degrees in the first 2 seconds */
+@keyframes rotate-bg-1 {
+  100% {
+    transform: rotateZ(120deg);
+  }
+}
 
