@@ -1,35 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <div class="container h-screen bg-white">
+    <div class=" flex text-indigo-700 text-3xl border-b border-solid border-gray-500 justify-around py-6">
+      <div class="w-11"></div>
+      <h1 class="font-bold text-center leading-none">Modify <br> your profile</h1>
+      <%= f.button :submit, "Save", class:"text-xl w-11 flex items-center bg-white" %>
+      <%#= link_to "Save", user_registration_path, class:"text-xl w-10 flex items-center" %>
+    </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+    <%= f.error_notification %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class="form-inputs flex flex-col items-center">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :email,
+                  required: false, autofocus: true,
+                  input_html: {class: "bg-gray-300 w-56 mt-20 mb-4 py-2 px-4 rounded-md text-gray-500"},
+                  label: false  %>
+      <%= f.input :last_name,
+                  required: false,
+                  input_html: {class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
+                  label: false %>
+      <%= f.input :first_name,
+                  required: false,
+                  input_html: {class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
+                  label: false %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "new-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  label: false,
+                  placeholder: "password" %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  label: false,
+                  placeholder: "confirmation" %>
+      <%= f.input :current_password,
+                  required: true,
+                  input_html: { autocomplete: "current-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  label: false,
+                  placeholder: "current-password" %>
+    </div>
+
+    <div class="form-actions">
+
+    </div>
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete, class:"flex justify-center text-indigo-700 text-xl mt-8" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%= render "pages/shared/tabbar" %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+
+
+
+
+
+

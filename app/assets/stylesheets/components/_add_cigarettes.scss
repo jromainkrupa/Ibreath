@@ -1,0 +1,36 @@
+.datas-a {
+  margin-top: 60px;
+  text-align: center;
+ }
+.smoked-a {
+  text-align: center;
+  font: normal normal bold 36px/55px Poppins;
+  letter-spacing: 0.18px;
+  color: #E66E6A;
+}
+.allowed-a {
+  text-align: center;
+  font: normal normal bold 36px/55px Poppins;
+  letter-spacing: 0.18px;
+  color: #97E4D9;
+}
+.svg-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items:center;
+  justify-content:center;
+}
+.svg-clope {
+  margin-left: -87px;
+  margin-top: 30px;
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 75px;
+}
+#delete-btn {
+  margin-right: 80px;
+}
