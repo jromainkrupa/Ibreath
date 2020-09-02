@@ -5,11 +5,11 @@
 
 <div class="pl-4 pr-4 w-full">
   <div class="flex flex-col items-center justify-center">
-    <% 28.times do |i| %>
-      <% smoked_smokes = current_user.get_number_of_smoke(start + i.day + 1) %>
-      <% allowed_smokes = current_user.program.cigarette_allowed_for(start + i.day + 1) %>
+    <% 29.times do |i| %>
+      <% smoked_smokes = current_user.get_number_of_smoke(start + i.day) %>
+      <% allowed_smokes = current_user.program.cigarette_allowed_for(start + i.day) %>
       <% percent = ((smoked_smokes.to_f / allowed_smokes) * 100) %>
-      
+
 
       <div class="flex justify-start mb-2 shadow-md rounded-md">
 
@@ -17,17 +17,17 @@
           <h3 class="text-base font-semibold text-gray-800">Day <%= i + 1 %></h3>
           <h3 class="text-base text-gray-800"><%= (start + i + 1).strftime('%a %d %b') %></h3>
         </div>
-        
+
         <% if percent.round == 0 %>
-          <div class="bg-green-400 w-48 flex justify-center items-center font-semibold text-md rounded-md rounded-l-none text-gray-800">Smoked : 0</div>
+          <div class="bg-green-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : 0 / <%= allowed_smokes %></span> </div>
         <% elsif percent.round > 100 %>
-          <div class="bg-red-400 w-48 flex justify-center items-center font-semibold text-md rounded-md rounded-l-none text-gray-800">Smoked : <%= smoked_smokes %></div>
+          <div class="bg-red-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
         <% elsif percent.round == 100 %>
-          <div class="bg-blue-400 w-48 flex justify-center items-center font-semibold text-md rounded-md rounded-l-none text-gray-800">Smoked : <%= smoked_smokes %></div>
+          <div class="bg-blue-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
         <% else %>
           <div class="bg-green-400 w-48 relative rounded-md rounded-l-none">
             <div class="bg-blue-400 h-full" style="max-width: 100%; width: <%= percent.round %>%"></div>
-            <p class="spared font-semibold text-md text-gray-800">Smoked : <%= smoked_smokes %></p>
+            <p class="spared font-semibold text-md text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %></span> </p>
           </div>
         <% end %>
 
