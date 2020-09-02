@@ -1,77 +1,310 @@
-wrapper {
+.wrapper {
   position: absolute;
-  width: 4em;
-  height: 4em;
-  left: calc(50% - 2em);
-}
-.wedge {
-  animation: rotate 4s infinite linear;
-  width: 4em;
-  height: 2em;
-}
-@keyframes rotate {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-.dial-container {
-  position: absolute;
-  top: 0;
-  left: 0em;
-  width: 4em;
-  height: 2em;
-  overflow: hidden;
-}
-.container1 {
-  left: 0em;
-}
-.container1 .wedge {
-  animation: rotate-bg-1 4s ease-in-out forwards;
-  border-radius: 4em 4em 0em 0em;
-  left: 0;
-  transform-origin: 50% 100%;
-  background-color: #F56565;
-}
-.wrapper::after {
-  content: "";
-  background: #fff;
-  border-radius: 50%;
-  width: 3em;
-  height: 3em;
-  position: absolute;
-  top: 0.5em;
-  left: 0.5em;
-}
-.marker {
-  border-radius: 50%;
-  height: 0.5em;
-  width: 0.5em;
-  position: absolute;
-  top: calc(0% + 2em - 0.25em);
-
-}
-.start {
-  background: white;
-  left: calc(0% + 4em - 0.5em);
-}
-.end {
-  animation: rotate-marker 4s ease-in-out forwards;
-  transform-origin: 2em 50%;
-  background: #F56565;
-  left: 0;
+  width: 8em;
+  height: 8em;
+  left: 25%;
+  top:5em;
+  transform: rotate(-90deg) scale(2.2);
 }
 
-/* the values of angle need to be set with ruby*/
-@keyframes rotate-marker {
-  100% {
-    transform: rotateZ(120deg);
+  .dials {
+    animation: show-dials 5s infinite ease-out;
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    position: absolute;
+    top: 1.75em;
+    left: 0;
   }
+
+  // .dial {
+  //   // border: 1px solid #000;
+  //   border-radius: 50%;
+  // }
+
+  /**** DIAL 1 ****/
+  .dial.move {
+    position: absolute;
+    width: 8em;
+    height: 8em;
+
+    &::before {
+      background: url(https://cssanimation.rocks/assets/images/posts/watch/1.png) no-repeat center;
+      background-size: 50%;
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      top: -0.29em;
+      left: calc(50% - 0.75em);
+      z-index: 10;
+    }
+
+    &::after {
+      content: "";
+      background: #fff;
+      border-radius: 50%;
+      width: 6em;
+      height: 6em;
+      position: absolute;
+      top: 1em;
+      left: 1em;
+    }
+
+    .dial-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4em;
+      overflow: hidden;
+    }
+    .wedge {
+      width: 4em;
+      height: 8em;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+    }
+    .container1 {
+      left: 4em;
+    }
+    .container1 .wedge {
+      animation: rotate-bg-dial-1-1 5s ease-out forwards;
+      border-radius: 8em 0 0 8em;
+      background: #80E7D9;
+      left: -4em;
+      transform-origin: 100% 50%;
+    }
+
+    .container2 {
+      left: 0;
+    }
+    // .container2 .wedge {
+    //   animation: rotate-bg-dial-1-2 5s 0.2s linear infinite;
+    //   background: #80E7D9;
+    //   border-radius: 0 8em 8em 0;
+    //   transform-origin: 0 50%;
+    //   left: 4em;
+    // }
+
+    .marker {
+      width: 1em;
+      height: 1em;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 0.5em);
+    }
+    .end {
+      animation: rotate-marker-dial-1 5s ease-out forwards;
+      transform-origin: 50% 4em;
+      background: #80E7D9;
+    }
+  }
+
+  /**** DIAL 2 ****/
+  .dial.exercise {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    top: 1em;
+    left: 1em;
+
+    &::before {
+      background: url(https://cssanimation.rocks/assets/images/posts/watch/2.png) no-repeat center;
+      background-size: 50%;
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      top: -0.29em;
+      left: calc(50% - 0.75em);
+      z-index: 10;
+    }
+
+    &::after {
+      content: "";
+      background: #fff;
+      border-radius: 50%;
+      width: 4em;
+      height: 4em;
+      position: absolute;
+      top: 1em;
+      left: 1em;
+    }
+
+    .dial-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3em;
+      overflow: hidden;
+    }
+    .wedge {
+      border-radius: 50%;
+      width: 3em;
+      height: 6em;
+      position: absolute;
+    }
+    .container1 {
+      left: 3em;
+    }
+    .container1 {
+      .wedge {
+        animation: rotate-bg-dial-2-1 5s ease-out forwards;
+        border-radius: 8em 0 0 8em;
+        position: absolute;
+        background: #F56565;
+        left: -3em;
+        transform-origin: 100% 50%;
+      }
+    }
+
+    .marker {
+      width: 1em;
+      height: 1em;
+      background: #FFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 0.48em);
+    }
+    .end {
+      animation: rotate-marker-dial-2 5s ease-out forwards;
+      transform-origin: 45% 3em;
+      background: #F56565;
+    }
+  }
+
+  /**** DIAL 3 ****/
+  .dial.stand {
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    top: 2em;
+    left: 2em;
+
+    &::before {
+      background: url(https://cssanimation.rocks/assets/images/posts/watch/3.png) no-repeat center;
+      background-size: 50%;
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      top: -0.28em;
+      left: calc(50% - 0.75em);
+      z-index: 10;
+    }
+
+    &::after {
+      content: "";
+      background: #fff;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      position: absolute;
+      top: 1em;
+      left: 1em;
+    }
+
+    .dial-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4em;
+      overflow: hidden;
+    }
+    .wedge {
+      border-radius: 50%;
+      width: 2em;
+      height: 4em;
+      position: absolute;
+    }
+    .container1 {
+      left: 2em;
+    }
+    .container1 {
+      .wedge {
+        position: absolute;
+        animation: rotate-bg-dial-3-1 5s ease-out forwards;
+        background: #0093ED;
+        border-radius: 8em 0 0 8em;
+        left: -2em;
+        transform-origin: 100% 50%;
+      }
+    }
+    .marker {
+      width: 1em;
+      height: 1em;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 0.01;
+      left: calc(50% - 0.5em);
+    }
+    .end {
+      animation: rotate-marker-dial-3 5s ease-out forwards;
+      transform-origin: 50% 2em;
+      background: #0093ED;
+    }
+  }
+
+  .dial-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+
+    &.one {
+      background: none;
+
+    }
+
+    &.two {
+      background: none;
+    }
+
+    &.three {
+      background: none;
+    }
+  }
+.timer-container {
+  background-color: white;
+  width:40%;
+  bottom:0;
+  height: 100%;
+  z-index: 200;
+  position: relative;
 }
 
-/* First animation moves 180 degrees in the first 2 seconds */
-@keyframes rotate-bg-1 {
-  100% {
-    transform: rotateZ(120deg);
-  }
+.timer-container .timer {
+  z-index:199;
+  transform: rotate(90deg);
+  color:black;
+  position: relative;
+  top:4em;
+  bottom:0;
+  left:1.5em;
+  right:0;
 }
+
+/** Animations **/
+
+
+
+// @keyframes rotate-bg-dial-1-2 {
+//   24% {
+//     transform: rotateZ(0);
+//   }
+//   28%, 100% {
+//     transform: rotateZ(180deg);
+//   }
+//   // 95%, 100% {
+//   //   transform: rotateZ(0);
+//   // }
+// }
 
