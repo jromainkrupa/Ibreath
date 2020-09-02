@@ -105,7 +105,7 @@
 </style>
 
 
-<!-- <div class="container bg-indigo-700 h-screen flex flex-col justify-center items-center text-white"> -->
+
   <div class="flex justify-center items-center mb-20">
     <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
   </div>
@@ -113,30 +113,41 @@
 <%= link_to add_a_cigarette_path do %>
 <svg xmlns="http://www.w3.org/2000/svg" width="73" height="73" viewBox="0 0 73 73"><defs><style>.a{fill:#fff;stroke:#707070;}.b{fill:#4850b2;font-size:16px;font-family:Poppins-Bold, Poppins;font-weight:700;}.c{fill:#474eaf;}.d{stroke:none;}.e{fill:none;}</style></defs><g transform="translate(-291 -637)"><g class="a" transform="translate(291 637)"><circle class="d" cx="36.5" cy="36.5" r="36.5"/><circle class="e" cx="36.5" cy="36.5" r="36"/></g><text class="b" transform="translate(332 647)"><tspan x="8.012" y="17">+</tspan></text><g transform="translate(215.187 699.094) rotate(-90)"><g transform="translate(0 109.583)"><rect class="c" width="10.293" height="7.324"/></g><g transform="translate(12.783 109.583)"><rect class="c" width="23.74" height="7.324"/></g><g transform="translate(39.014 109.583)"><rect class="c" width="3.486" height="7.324"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 51.091, 94.66)"><path class="c" d="M345.272,102.971h-4.814a1.3,1.3,0,0,1,0-2.6h5.119a3.708,3.708,0,1,0,0-7.415H340.4a1.247,1.247,0,0,1-1.245-1.245v-2.49h-2.49v2.49a3.74,3.74,0,0,0,3.735,3.735h5.174a1.217,1.217,0,1,1,0,2.435h-5.119a3.791,3.791,0,0,0,0,7.581h4.814a1.524,1.524,0,0,1,1.522,1.522v.36h2.49v-.36A4.017,4.017,0,0,0,345.272,102.971Z" transform="translate(-336.667 -89.219)"/></g></g></g></svg>
 <% end %>
-
-
-  <div class="bg-white w-full shadow-md rounded-t-lg" style="height: 45em">
     <p class="my-8 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
-    <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
+
+  <div class="bg-white w-full shadow-md rounded-t-md flex flex-col pt-8 items-center" style="height: 45em">
+    <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+      <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
+      <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
+        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
+      </div>
+    </div>
+    <div class="bg-indigo-500 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+        <p class="text-white text-xl font-bold pl-4 pr-2 leading-6">You <br> spared</p>
+      <div class="bg-white h-full w-7/12 rounded-md flex items-center justify-center">
+        <p class="text-indigo-500 font-bold pl-4 pr-2 leading-5 text-center"> <strong class="text-5xl"> <%= current_user.program.cigarette_allowed_for(Date.current) - current_user.get_number_of_smoke(Date.current) %> </strong> <br> cigarettes </p>
+      </div>
+    </div>
+    <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+      <p class="text-teal-300 text-xl font-bold pl-4 pr-2 leading-6">You can<br> smoked</p>
+      <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
+        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.program.cigarette_allowed_for(Date.current) %></strong> <br> cigarettes</p>
+      </div>
+    </div>
+  </div>
+    <!-- <div class="bg-green-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
+      <p>Spared </p>
+      <p>cigarettes</p>
+    </div> -->
+
+    <!-- <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
       <div class=" row-span-1 col-span-2 bg-indigo-500 shadow-md rounded-md flex flex-col justify-center">
         <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
         <p class='text-white pl-4 leading-5 tracking-wide'>You smoked: <strong><%= current_user.get_number_of_smoke(Date.current) %>/<%= current_user.program.cigarette_allowed_for(Date.current)%></strong></p>
         <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong><%= time_ago_in_words(current_user.last_smoke.created_at) %></strong> ago</p>
       </div>
 
-      <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
 
-        <p class="text-purple-400 text-xl font-bold pl-4 pr-2">You <br> smoked</p>
-        <div class="bg-purple-400 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
-        </div>
-      </div>
-
-      <div class="row-span-2 col-span-1 bg-green-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
-       <p>Spared </p>
-       <p class="leading-5" style="font-size: 8rem;"><%= current_user.program.get_spared_cigarettes(Date.current) %></p>
-       <p>cigarettes</p>
-     </div>
 
       <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
 
@@ -147,31 +158,4 @@
       </div>
         <%= link_to "Unlock", unlock_path, method: "post" %>
 
-    </div>
-
-  </div>
-<!-- </div> -->
-
-<!--
-      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-    <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-
-<%# Smoke.create(user:current_user, created_at: Date.current) %>
-
-
-<p class="text-center">You already smoked <strong><%= current_user.get_number_of_smoke(Date.current) %></strong> today</p>
-
-<p class="text-center">You spared <strong><%= @ar_program.average_smoke - current_user.smokes.where(created_at: Date.current).count %></strong> cigarettes today</p>
-
-
-
-
-<div class="w-full bottom-0 fixed flex bg-transparent border border-blue-500">
-  <%= link_to "Today", daily_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
-  <%= link_to "Stats", prepwork_results_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
-  <%= link_to "Program", my_program_path, class:"flex-1 text-blue-700 border border-blue-500 hover:bg-blue-500 text-center hover:text-white px-4 py-2 m-2" %>
-</div>
-
-
-
--->
+    </div> -->
