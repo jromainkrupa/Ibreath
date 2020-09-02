@@ -1,0 +1,85 @@
+.circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  opacity: 0;
+  animation: circleScaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+.item {
+  z-index: 100;
+  padding: 5px;
+}
+
+.item img {
+  width: 150px;
+}
+
+@keyframes circleScaleIn {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+  to {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
+  }
+}
+
+
+@keyframes circleScaleInSuccess {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+    font-size: 0em;
+  }
+
+  to {
+    transform: scale(1.5, 1.5);
+    opacity: 1;
+    font-size: 1.6em;
+  }
+}
+
+
+@keyframes hiddenCircleScaleInSuccess {
+  from {
+    transform: scale(2.5, 2.5);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+}
+
+#paring.successfully .circle:not(.circle-success) {
+  animation-iteration-count: 1;
+}
+
+#paring .circle.circle-success {
+  display: none
+}
+
+#paring.successfully .circle-success.circle-success {
+  opacity: 1;
+  transform: scale(1.5, 1.5);
+  animation: circleScaleInSuccess 2s none cubic-bezier(.36, .11, .89, .32);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6em;
+}
+
+#paring a {
+  display: none;
+}
+
+#paring.successfully a {
+  display: block;
+}
+
+#paring.successfully p {
+  display: none;
+}
