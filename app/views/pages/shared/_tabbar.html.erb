@@ -1,6 +1,4 @@
-<%= params[:action] %>
-
-<div class="bg-indigo-700 tabbar fixed bottom-0 flex justify-around text-gray-400 py-2 shadow-lg rounded-t-md w-full">
+<div class="bg-indigo-700 tabbar fixed bottom-0  flex justify-around text-gray-400 py-2 shadow-lg rounded-t-md w-full">
   <%= link_to daily_program_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'daily_program'}" do %>
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -22,7 +20,7 @@
     Stats
   <% end %>
 
-  <%= link_to trophies_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == 'trophies'}" do %>
+  <%= link_to trophies_path, class:"w-6 flex items-center flex-col #{'text-white' if params[:action] == "trophies"}" do %>
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 0 595.3 595.3" enable-background="new 0 0 595.3 595.3" xml:space="preserve">
     <g>
@@ -50,7 +48,3 @@
     Profil
   <% end %>
 </div>
-<!--
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-    </svg> -->
