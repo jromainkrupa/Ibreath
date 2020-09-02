@@ -2,9 +2,10 @@
   position: absolute;
   width: 8em;
   height: 8em;
-  left: 25%;
+  left: 16.5%;
   top:5em;
-  transform: rotate(-90deg) scale(2.2);
+  -webkit-transform: translateX(-50%);
+  transform: rotate(-90deg) scale(2.2) translateX(-50%);
 }
 
   .dials {
@@ -37,7 +38,6 @@
       position: absolute;
       top: -0.29em;
       left: calc(50% - 0.75em);
-      z-index: 10;
     }
 
     &::after {
@@ -49,6 +49,7 @@
       position: absolute;
       top: 1em;
       left: 1em;
+      z-index:0;
     }
 
     .dial-container {
@@ -121,7 +122,6 @@
       position: absolute;
       top: -0.29em;
       left: calc(50% - 0.75em);
-      z-index: 10;
     }
 
     &::after {
@@ -195,7 +195,6 @@
       position: absolute;
       top: -0.28em;
       left: calc(50% - 0.75em);
-      z-index: 10;
     }
 
     &::after {
@@ -277,18 +276,16 @@
   width:40%;
   bottom:0;
   height: 100%;
-  z-index: 200;
   position: relative;
 }
 
 .timer-container .timer {
-  z-index:199;
   transform: rotate(90deg);
-  color:black;
+  color:#677EEA;
   position: relative;
-  top:4em;
+  top:3.5em;
   bottom:0;
-  left:1.5em;
+  left:1em;
   right:0;
 }
 
