@@ -1,5 +1,5 @@
   <div class="flex flex-col justify-center items-center mb-56">
-    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
+    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program + 1%></span></h1>
     <p class="my-3 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
   </div>
   <section class="wrapper">
@@ -41,7 +41,7 @@
 
 <% allowed =  current_user.program.cigarette_allowed_for(Date.current) %>
 <% smoked = current_user.get_number_of_smoke(Date.current) %>
-<% spared = current_user.program.get_spared_cigarettes(Date.current) %>
+<%= spared = allowed - smoked%>
 
 <style>
   @keyframes rotate-marker-dial-1 {

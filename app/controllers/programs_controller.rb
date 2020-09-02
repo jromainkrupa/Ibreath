@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
     @init_smoke = @user.average_smoke
     @start_time = Date.current
     Program.create(user: @user, init_smoke: @init_smoke, start_time: @start_time)
-    redirect_to my_program_path(current_user)
+    redirect_to calendar_path(current_user)
   end
 
   private
