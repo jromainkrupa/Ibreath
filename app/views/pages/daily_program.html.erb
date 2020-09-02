@@ -1,13 +1,110 @@
-<div class="wrapper">
-  <div class="dial-container container1">
-    <div class="wedge"></div>
-  </div>
-  <div class="marker start"></div>
-  <div class="marker end"></div>
-</div>
+<section class="wrapper">
+      <section class="dials">
+        <div class="dial move">
+          <div class="dial-background one"></div>
+          <div class="dial-container container1">
+            <div class="wedge"></div>
+          </div>
+          <div class="dial-container container2">
+            <div class="wedge"></div>
+          </div>
+          <div class="marker start"></div>
+          <div class="marker end"></div>
+        </div>
+        <div class="dial exercise">
+          <div class="dial-background two"></div>
+          <div class="dial-container container1">
+            <div class="wedge"></div>
+          </div>
+          <div class="marker start"></div>
+          <div class="marker end"></div>
+        </div>
+        <div class="dial stand">
+          <div class="dial-background three"></div>
+          <div class="dial-container container1">
+            <div class="wedge"></div>
+          </div>
+          <div class="marker start"></div>
+          <div class="marker end"></div>
+        </div>
+        <div class="timer-container">
+          <div class="timer">
+            <span>01:00</span>
+          </div>
+        </div>
+      </section>
+</section>
+
+<% allowed =  current_user.program.cigarette_allowed_for(Date.current) %>
+<% smoked = current_user.get_number_of_smoke(Date.current) %>
+<% spared = current_user.program.get_spared_cigarettes(Date.current) %>
+
+<style>
+  @keyframes rotate-marker-dial-1 {
+/*  // 0%, 6% {
+  //   transform: none;
+  // }*/
+  19%, 100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-bg-dial-1-1 {
+/*  // 0%, 0.25% {
+  //   transform: rotateZ(0);
+  // }*/
+  19%, 100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-marker-dial-2 {
+/*  // 0%, 6% {
+  //   transform: none;
+  // }*/
+  20%, 100% {
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed).round(2) %>deg);
+  }
+/*  // 91%, 100% {
+  //   transform: none;
+  // }*/
+}
+
+@keyframes rotate-bg-dial-2-1 {
+/*  // 0%, 0.5% {
+  //   transform: none;
+  // }*/
+  19%, 100% {
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed).round(2) %> deg);
+  }
+/*  // 91%, 100% {
+  //   transform: none;
+  // }*/
+}
+
+@keyframes rotate-marker-dial-3 {
+  19%, 100% {
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+  }
+/*  // 91%, 100% {
+  //   transform: none;
+  // }*/
+}
+
+@keyframes rotate-bg-dial-3-1 {
+/*  // 0%, 1% {
+  //   transform: none;
+  // }*/
+  19%, 100% {
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+  }
+/*  // 91%, 100% {
+  //   transform: none;
+  // }*/
+}
+</style>
 
 
-<% Smoke.create(user: current_user) %>
 <!-- <div class="container bg-indigo-700 h-screen flex flex-col justify-center items-center text-white"> -->
   <div class="flex justify-center items-center mb-20">
     <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
