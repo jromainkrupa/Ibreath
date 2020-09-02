@@ -227,6 +227,20 @@ end
   Smoke.create(user: romain, created_at: program_date_launch_romain + 1.day + i.hours)
 end
 
+12.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 2.day + i.hours)
+end
+
+5.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 3.day + i.hours)
+end
+
+13.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 4.day + i.hours)
+end
+20.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 5.day + i.hours)
+end
 
 
 require 'program_seed_creator'
