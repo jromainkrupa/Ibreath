@@ -1,4 +1,8 @@
-<section class="wrapper">
+  <div class="flex flex-col justify-center items-center mb-56">
+    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
+    <p class="my-3 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
+  </div>
+  <section class="wrapper">
       <section class="dials">
         <div class="dial move">
           <div class="dial-background one"></div>
@@ -29,7 +33,7 @@
         </div>
         <div class="timer-container">
           <div class="timer">
-            <span>01:00</span>
+            <span> <%= Time.at(current_user.program.get_spread(DateTime.current)).utc.strftime("%H:%M")%> </span>
           </div>
         </div>
       </section>
@@ -63,7 +67,7 @@
   //   transform: none;
   // }*/
   20%, 100% {
-    transform: rotateZ(<%= (smoked * 180).fdiv(allowed).round(2) %>deg);
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
   }
 /*  // 91%, 100% {
   //   transform: none;
@@ -75,7 +79,7 @@
   //   transform: none;
   // }*/
   19%, 100% {
-    transform: rotateZ(<%= (smoked * 180).fdiv(allowed).round(2) %> deg);
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
   }
 /*  // 91%, 100% {
   //   transform: none;
@@ -105,17 +109,7 @@
 </style>
 
 
-
-  <div class="flex justify-center items-center mb-20">
-    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program %></span></h1>
-  </div>
-
-<%= link_to add_a_cigarette_path do %>
-<svg xmlns="http://www.w3.org/2000/svg" width="73" height="73" viewBox="0 0 73 73"><defs><style>.a{fill:#fff;stroke:#707070;}.b{fill:#4850b2;font-size:16px;font-family:Poppins-Bold, Poppins;font-weight:700;}.c{fill:#474eaf;}.d{stroke:none;}.e{fill:none;}</style></defs><g transform="translate(-291 -637)"><g class="a" transform="translate(291 637)"><circle class="d" cx="36.5" cy="36.5" r="36.5"/><circle class="e" cx="36.5" cy="36.5" r="36"/></g><text class="b" transform="translate(332 647)"><tspan x="8.012" y="17">+</tspan></text><g transform="translate(215.187 699.094) rotate(-90)"><g transform="translate(0 109.583)"><rect class="c" width="10.293" height="7.324"/></g><g transform="translate(12.783 109.583)"><rect class="c" width="23.74" height="7.324"/></g><g transform="translate(39.014 109.583)"><rect class="c" width="3.486" height="7.324"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 51.091, 94.66)"><path class="c" d="M345.272,102.971h-4.814a1.3,1.3,0,0,1,0-2.6h5.119a3.708,3.708,0,1,0,0-7.415H340.4a1.247,1.247,0,0,1-1.245-1.245v-2.49h-2.49v2.49a3.74,3.74,0,0,0,3.735,3.735h5.174a1.217,1.217,0,1,1,0,2.435h-5.119a3.791,3.791,0,0,0,0,7.581h4.814a1.524,1.524,0,0,1,1.522,1.522v.36h2.49v-.36A4.017,4.017,0,0,0,345.272,102.971Z" transform="translate(-336.667 -89.219)"/></g></g></g></svg>
-<% end %>
-    <p class="my-8 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
-
-  <div class="bg-white w-full shadow-md rounded-t-md flex flex-col pt-8 items-center" style="height: 45em">
+  <div class="z-50 bg-white w-full shadow-md rounded-t-md flex flex-col pt-8 items-center" style="height: calc(100vh-64px)">
     <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
       <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
@@ -134,28 +128,16 @@
         <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.program.cigarette_allowed_for(Date.current) %></strong> <br> cigarettes</p>
       </div>
     </div>
+    <div class="w-full flex justify-around">
+    <%= link_to unlock_path, method: "post" do %>
+      <svg class="w-20" fill="none" viewBox="0 0 24 24" stroke="#3F439F">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    <% end %>
+    <%= link_to add_a_cigarette_path do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="73" height="73" viewBox="0 0 73 73"><defs><style>.a{fill:#fff;stroke:#707070;}.b{fill:#4850b2;font-size:16px;font-family:Poppins-Bold, Poppins;font-weight:700;}.c{fill:#474eaf;}.d{stroke:none;}.e{fill:none;}</style></defs><g transform="translate(-291 -637)"><g class="a" transform="translate(291 637)"><circle class="d" cx="36.5" cy="36.5" r="36.5"/><circle class="e" cx="36.5" cy="36.5" r="36"/></g><text class="b" transform="translate(332 647)"><tspan x="8.012" y="17">+</tspan></text><g transform="translate(215.187 699.094) rotate(-90)"><g transform="translate(0 109.583)"><rect class="c" width="10.293" height="7.324"/></g><g transform="translate(12.783 109.583)"><rect class="c" width="23.74" height="7.324"/></g><g transform="translate(39.014 109.583)"><rect class="c" width="3.486" height="7.324"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 51.091, 94.66)"><path class="c" d="M345.272,102.971h-4.814a1.3,1.3,0,0,1,0-2.6h5.119a3.708,3.708,0,1,0,0-7.415H340.4a1.247,1.247,0,0,1-1.245-1.245v-2.49h-2.49v2.49a3.74,3.74,0,0,0,3.735,3.735h5.174a1.217,1.217,0,1,1,0,2.435h-5.119a3.791,3.791,0,0,0,0,7.581h4.814a1.524,1.524,0,0,1,1.522,1.522v.36h2.49v-.36A4.017,4.017,0,0,0,345.272,102.971Z" transform="translate(-336.667 -89.219)"/></g></g></g></svg>
+    <% end %>
+
+    </div>
   </div>
-    <!-- <div class="bg-green-500 shadow-md rounded-md text-white flex flex-col justify-around text-center text-xl font-bold">
-      <p>Spared </p>
-      <p>cigarettes</p>
-    </div> -->
 
-    <!-- <div class="grid grid-rows-3 grid-col-2 gap-4 w-full px-4" style="height: 25em">
-      <div class=" row-span-1 col-span-2 bg-indigo-500 shadow-md rounded-md flex flex-col justify-center">
-        <p class="text-white font-bold text-xl pl-4 mb-2 tracking-wide">Recap of the day</p>
-        <p class='text-white pl-4 leading-5 tracking-wide'>You smoked: <strong><%= current_user.get_number_of_smoke(Date.current) %>/<%= current_user.program.cigarette_allowed_for(Date.current)%></strong></p>
-        <p class='text-white pl-4 leading-5 tracking-wide'>last smoke:   <strong><%= time_ago_in_words(current_user.last_smoke.created_at) %></strong> ago</p>
-      </div>
-
-
-
-      <div class="row-span-1 col-span-1 bg-white shadow-md rounded-md flex justify-between items-center">
-
-        <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center">
-          <p class="text-center text-white font-bold leading-5 text-3xl"> <strong class="text-5xl"><%= distance_of_time_in_words(0, current_user.program.get_spread(Date.current).to_f, scope: 'datetime.distance_in_words.short') %></strong></p>
-        </div>
-        <p class="text-teal-300 text-xl font-bold pl-4 pr-2">Next <br> opening</p>
-      </div>
-        <%= link_to "Unlock", unlock_path, method: "post" %>
-
-    </div> -->
