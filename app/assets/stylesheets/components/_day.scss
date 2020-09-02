@@ -1,31 +1,8 @@
-.day-container {
-  width: 66px;
-  height: 96px;
-}
-.day-title {
-  text-align: center;
-  font: normal normal bold 14px/21px Helvetica;
-}
+.spared {
+  position: absolute;
+  bottom: 1.3em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
 
-.shadow-red {
-  box-shadow: 1px 1px 1px 1px black;
-}
-
-.shadow-green {
-  box-shadow: 1px 1px 4px 1px #89eb80;
-}
-
-.datas {
-  margin-top: 30px;
-  text-align: center;
- }
-.smoked {
-  text-align: center;
-  font: normal normal bold 18px/27px Helvetica;
-  letter-spacing: 0.18px;
-}
-.allowed {
-  text-align: center;
-  font: normal normal bold 18px/27px Helvetica;
-  letter-spacing: 0.18px;
 }
