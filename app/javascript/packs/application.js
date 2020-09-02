@@ -12,6 +12,7 @@ import "../components/calendar_program.js"
 import { calendarDay } from "../components/calendar_program.js"
 import { clickBtn } from "../components/click_btn.js"
 import { addClope } from "../components/add_clope.js"
+import { initParing } from "../components/paring.js"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -38,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   calendarDay();
   clickBtn();
   addClope();
+  initParing();
   /* day.addEventListener("click", (event) => {
     console.log("event");
   }); */
