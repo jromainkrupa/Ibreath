@@ -17,29 +17,29 @@
 
       <%= f.input :email,
                   required: false, autofocus: true,
-                  input_html: {class: "bg-gray-300 w-56 mt-20 mb-4 py-2 px-4 rounded-md text-gray-500"},
+                  input_html: {class: "bg-gray-200 w-56 mt-20 mb-4 py-2 px-4 rounded-md text-gray-500"},
                   label: false  %>
       <%= f.input :last_name,
                   required: false,
-                  input_html: {class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
+                  input_html: {class: "bg-gray-200 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
                   label: false %>
       <%= f.input :first_name,
                   required: false,
-                  input_html: {class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
+                  input_html: {class: "bg-gray-200 w-56 my-3 py-2 px-4 rounded-md text-gray-500"},
                   label: false %>
       <%= f.input :password,
                   required: false,
-                  input_html: { autocomplete: "new-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  input_html: { autocomplete: "new-password", class: "bg-gray-200 w-56 my-3 py-2 px-4 rounded-md" },
                   label: false,
                   placeholder: "password" %>
       <%= f.input :password_confirmation,
                   required: false,
-                  input_html: { autocomplete: "new-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  input_html: { autocomplete: "new-password", class: "bg-gray-200 w-56 my-3 py-2 px-4 rounded-md" },
                   label: false,
                   placeholder: "confirmation" %>
       <%= f.input :current_password,
                   required: true,
-                  input_html: { autocomplete: "current-password", class: "bg-gray-300 w-56 my-3 py-2 px-4 rounded-md" },
+                  input_html: { autocomplete: "current-password", class: "bg-gray-200 w-56 my-3 py-2 px-4 rounded-md" },
                   label: false,
                   placeholder: "current-password" %>
     </div>
@@ -50,13 +50,3 @@
     <%= link_to "Log out", destroy_user_session_path, :method => :delete, class:"flex justify-center text-indigo-700 text-xl mt-8" %>
   </div>
 <% end %>
-
-<%= render "pages/shared/tabbar" %>
-
-
-
-
-
-
-
-
