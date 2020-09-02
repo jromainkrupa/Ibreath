@@ -1,22 +1,22 @@
-<div class="container flex flex-col h-screen overflow-auto bg-gray-200">
+<div class="container flex flex-col h-screen overflow-auto bg-gray-100">
   <div class="flex flex-col items-center flex-grow">
-    <h2 class="text-indigo-700 text-2xl py-24">Sign in</h2>
+    <h2 class="text-indigo-700 text-3xl py-24 font-semibold">Sign in</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs w-screen">
-        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
-          <i class="far fa-envelope text-gray-500"></i>
+        <div class="bg-gray-200 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
+          <i class="far fa-envelope text-gray-400"></i>
           <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email", class: "ml-6 bg-gray-300 w-56"},
+                input_html: { autocomplete: "email", class: "ml-6 bg-gray-200 w-56"},
                 label: false,
                 placeholder: "Email" %>
         </div>
-        <div class="bg-gray-300 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
+        <div class="bg-gray-200 py-3 px-6 mb-3 mx-6 rounded-md flex items-center">
           <i class="fas fa-unlock text-gray-500"></i>
           <%= f.input :password,
                       required: false,
-                      input_html: { autocomplete: "current-password", class: "ml-6 bg-gray-300 w-56"},
+                      input_html: { autocomplete: "current-password", class: "ml-6 bg-gray-200 w-56"},
                       label: false,
                       placeholder: "Password" %>
         </div>

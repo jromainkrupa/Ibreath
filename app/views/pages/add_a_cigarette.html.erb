@@ -4,7 +4,7 @@
   <p class="w-12"></p>
 </div>
 
-<div class="svg-container">
+<div class="svg-container bg-gray-100">
   <div class="datas-a">
     <p><span class="smoked-a"><%= current_user.get_number_of_smoke(Date.current) %></span><span class="text-4xl"> / </span><span class="allowed-a"><%= current_user.program.cigarette_allowed_for(Date.current) %></span></p>
   </div>
