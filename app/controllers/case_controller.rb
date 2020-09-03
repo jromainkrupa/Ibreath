@@ -3,6 +3,6 @@ require 'httparty'
 
 class CaseController < ActionController::Base
   def unlock
-    HTTParty.post(Case.first.url, body: {password: "totolatata" })
+    HTTParty.post(Case.first.url)
   end
 end
