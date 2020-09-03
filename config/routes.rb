@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/trophies', to: 'pages#trophies'
   post '/unlock', to: 'case#unlock'
   get '/add-a-cigarette', to: 'pages#add_a_cigarette'
+  get '/manifest.json', to: 'service_worker#manifest'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :smokes, only: [:create, :destroy, :new]
