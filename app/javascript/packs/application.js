@@ -13,6 +13,7 @@ import { calendarDay } from "../components/calendar_program.js"
 import { clickBtn } from "../components/click_btn.js"
 import { addClope } from "../components/add_clope.js"
 import { initParing } from "../components/paring.js"
+import { loadDynamicBannerText } from "../components/type.js"
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -41,15 +42,10 @@ document.addEventListener('turbolinks:load', () => {
   clickBtn();
   addClope();
   initParing();
+  loadDynamicBannerText();
+
   /* day.addEventListener("click", (event) => {
     console.log("event");
   }); */
 });
 
-import { loadDynamicBannerText } from '../components/type';
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your JS functions here
-  // [...]
-  loadDynamicBannerText();
-});
