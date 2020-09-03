@@ -1,6 +1,6 @@
   <div class="flex flex-col justify-center items-center mb-48">
     <h1 class="text-3xl font-bold"> <span class="text-5xl text-indigo-700">Day <%= @ar_program.number_of_days_of_program + 1%></span></h1>
-    <p class="my-3 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
+    <p class="my-3 text-center text-xl text-indigo-700 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
   </div>
   <section class="wrapper">
       <section class="dials">
@@ -110,7 +110,7 @@
 
 
   <div class="z-50 bg-gray-100 w-full rounded-t-md flex flex-col items-center mt-4">
-    <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+    <div class="bg-gray-100 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
       <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
         <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
@@ -118,24 +118,28 @@
     </div>
     <div class="bg-indigo-500 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
         <p class="text-white text-xl font-bold pl-4 pr-2 leading-6">You <br> spared</p>
-      <div class="bg-white h-full w-7/12 rounded-md flex items-center justify-center">
+      <div class="bg-gray-100 h-full w-7/12 rounded-md flex items-center justify-center">
         <p class="text-indigo-500 font-bold pl-4 pr-2 leading-5 text-center"> <strong class="text-5xl"> <%= current_user.program.cigarette_allowed_for(Date.current) - current_user.get_number_of_smoke(Date.current) %> </strong> <br> cigarettes </p>
       </div>
     </div>
-    <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+    <div class="bg-gray-100 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-teal-300 text-xl font-bold pl-4 pr-2 leading-6">You can<br> smoke</p>
       <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
         <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.program.cigarette_allowed_for(Date.current) %></strong> <br> cigarettes</p>
       </div>
     </div>
     <div class="w-full flex justify-around">
-    <%= link_to unlock_path, method: "post", remote: true do %>
-      <svg class="w-20" fill="none" viewBox="0 0 24 24" stroke="#3F439F">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-      </svg>
-    <% end %>
-    <%= link_to add_a_cigarette_path do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="67.008" height="76.16" viewBox="0 0 67.008 76.16"><defs><style>.a{fill:#4850b2;font-size:50px;font-family:Poppins-Bold, Poppins;font-weight:700;}.b{fill:#474eaf;}</style></defs><g transform="translate(-295.992 -621.84)"><text class="a" transform="translate(329 627)"><tspan x="2.975" y="53">+</tspan></text><g transform="translate(295.992 690.376) rotate(-90)"><g transform="translate(0 19.849)"><rect class="b" width="13.69" height="9.741"/></g><g transform="translate(17.002 19.849)"><rect class="b" width="31.575" height="9.741"/></g><g transform="translate(51.889 19.849)"><rect class="b" width="4.637" height="9.741"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 67.951, 0)"><g transform="translate(0 0)"><path class="b" d="M11.445,18.29h-6.4a1.73,1.73,0,0,1,0-3.459H11.85a4.931,4.931,0,1,0,0-9.862H4.968A1.658,1.658,0,0,1,3.312,3.312V0H0V3.312A4.974,4.974,0,0,0,4.968,8.28H11.85a1.619,1.619,0,1,1,0,3.238H5.042a5.042,5.042,0,1,0,0,10.083h6.4a2.026,2.026,0,0,1,2.024,2.024V24.1h3.312v-.478A5.342,5.342,0,0,0,11.445,18.29Z"/></g></g></g></g></svg>
-    <% end %>
+      <div class="bg-gray-100 shadow-md rounded-md">
+        <%= link_to unlock_path, method: "post", remote: true do %>
+          <svg class="w-16 p-2" fill="none" viewBox="0 0 24 24" stroke="#3F439F">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        <% end %>
+      </div>
+      <div class="bg-gray-100 shadow-md rounded-md">
+        <%= link_to add_a_cigarette_path do %>
+          <svg  class="p-2 pl-3" width="65" height="72.16" viewBox="0 0 67.008 76.16"><defs><style>.a{fill:#4850b2;font-size:45px;font-family:Poppins-Bold, Poppins;font-weight:700;}.b{fill:#474eaf;}</style></defs><g transform="translate(-295.992 -621.84)"><text class="a" transform="translate(329 627)"><tspan x="2.975" y="53">+</tspan></text><g transform="translate(295.992 690.376) rotate(-90)"><g transform="translate(0 19.849)"><rect class="b" width="13.69" height="9.741"/></g><g transform="translate(17.002 19.849)"><rect class="b" width="31.575" height="9.741"/></g><g transform="translate(51.889 19.849)"><rect class="b" width="4.637" height="9.741"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 67.951, 0)"><g transform="translate(0 0)"><path class="b" d="M11.445,18.29h-6.4a1.73,1.73,0,0,1,0-3.459H11.85a4.931,4.931,0,1,0,0-9.862H4.968A1.658,1.658,0,0,1,3.312,3.312V0H0V3.312A4.974,4.974,0,0,0,4.968,8.28H11.85a1.619,1.619,0,1,1,0,3.238H5.042a5.042,5.042,0,1,0,0,10.083h6.4a2.026,2.026,0,0,1,2.024,2.024V24.1h3.312v-.478A5.342,5.342,0,0,0,11.445,18.29Z"/></g></g></g></g></svg>
+        <% end %>
+      </div>
   </div>
 
