@@ -1,10 +1,10 @@
-  <div class="flex flex-col justify-center items-center mb-56">
-    <h1 class="text-3xl font-bold"> <span class="text-5xl">Day <%= @ar_program.number_of_days_of_program + 1%></span></h1>
+  <div class="flex flex-col justify-center items-center mb-48">
+    <h1 class="text-3xl font-bold"> <span class="text-5xl text-indigo-700">Day <%= @ar_program.number_of_days_of_program + 1%></span></h1>
     <p class="my-3 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= @ar_program.get_day_ordanilizer(Date.current)%></sup></p>
   </div>
   <section class="wrapper">
       <section class="dials">
-        <div class="dial move">
+        <div class="dial move bg-gray-100">
           <div class="dial-background one"></div>
           <div class="dial-container container1">
             <div class="wedge"></div>
@@ -31,7 +31,7 @@
           <div class="marker start"></div>
           <div class="marker end"></div>
         </div>
-        <div class="timer-container">
+        <div class="timer-container bg-gray-100">
           <div class="timer">
             <span> <%= Time.at(current_user.program.get_spread(DateTime.current)).utc.strftime("%H:%M")%> </span>
           </div>
@@ -109,7 +109,7 @@
 </style>
 
 
-  <div class="z-50 bg-white w-full shadow-md rounded-t-md flex flex-col pt-8 items-center" style="height: calc(100vh-64px)">
+  <div class="z-50 bg-gray-100 w-full rounded-t-md flex flex-col items-center mt-4">
     <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
       <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
@@ -135,9 +135,7 @@
       </svg>
     <% end %>
     <%= link_to add_a_cigarette_path do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="73" height="73" viewBox="0 0 73 73"><defs><style>.a{fill:#fff;stroke:#707070;}.b{fill:#4850b2;font-size:16px;font-family:Poppins-Bold, Poppins;font-weight:700;}.c{fill:#474eaf;}.d{stroke:none;}.e{fill:none;}</style></defs><g transform="translate(-291 -637)"><g class="a" transform="translate(291 637)"><circle class="d" cx="36.5" cy="36.5" r="36.5"/><circle class="e" cx="36.5" cy="36.5" r="36"/></g><text class="b" transform="translate(332 647)"><tspan x="8.012" y="17">+</tspan></text><g transform="translate(215.187 699.094) rotate(-90)"><g transform="translate(0 109.583)"><rect class="c" width="10.293" height="7.324"/></g><g transform="translate(12.783 109.583)"><rect class="c" width="23.74" height="7.324"/></g><g transform="translate(39.014 109.583)"><rect class="c" width="3.486" height="7.324"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 51.091, 94.66)"><path class="c" d="M345.272,102.971h-4.814a1.3,1.3,0,0,1,0-2.6h5.119a3.708,3.708,0,1,0,0-7.415H340.4a1.247,1.247,0,0,1-1.245-1.245v-2.49h-2.49v2.49a3.74,3.74,0,0,0,3.735,3.735h5.174a1.217,1.217,0,1,1,0,2.435h-5.119a3.791,3.791,0,0,0,0,7.581h4.814a1.524,1.524,0,0,1,1.522,1.522v.36h2.49v-.36A4.017,4.017,0,0,0,345.272,102.971Z" transform="translate(-336.667 -89.219)"/></g></g></g></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="67.008" height="76.16" viewBox="0 0 67.008 76.16"><defs><style>.a{fill:#4850b2;font-size:50px;font-family:Poppins-Bold, Poppins;font-weight:700;}.b{fill:#474eaf;}</style></defs><g transform="translate(-295.992 -621.84)"><text class="a" transform="translate(329 627)"><tspan x="2.975" y="53">+</tspan></text><g transform="translate(295.992 690.376) rotate(-90)"><g transform="translate(0 19.849)"><rect class="b" width="13.69" height="9.741"/></g><g transform="translate(17.002 19.849)"><rect class="b" width="31.575" height="9.741"/></g><g transform="translate(51.889 19.849)"><rect class="b" width="4.637" height="9.741"/></g><g transform="matrix(0.035, 0.999, -0.999, 0.035, 67.951, 0)"><g transform="translate(0 0)"><path class="b" d="M11.445,18.29h-6.4a1.73,1.73,0,0,1,0-3.459H11.85a4.931,4.931,0,1,0,0-9.862H4.968A1.658,1.658,0,0,1,3.312,3.312V0H0V3.312A4.974,4.974,0,0,0,4.968,8.28H11.85a1.619,1.619,0,1,1,0,3.238H5.042a5.042,5.042,0,1,0,0,10.083h6.4a2.026,2.026,0,0,1,2.024,2.024V24.1h3.312v-.478A5.342,5.342,0,0,0,11.445,18.29Z"/></g></g></g></g></svg>
     <% end %>
-
-    </div>
   </div>
 

@@ -40,19 +40,19 @@
   </div>
   <div class="flex h-48 justify-center items-end p-2 bg-white m-2 shadow-md rounded-md">
     <% days.each do |day, value| %>
-      <div class="w-10 mx-1 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc(<%= value %>% * 3)"><%= day %></div>
+      <div class="w-10 mx-1 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="max-height: 175px; height: calc(<%= value %>% * 3)"><%= day %></div>
     <% end %>
   </div>
 
-  <h2 class="text-orange-400 font-semibold text-xl">Weekly consumption</h2>
+  <h2 class="text-red-400 font-semibold text-xl">Weekly consumption</h2>
 
   <div class="flex h-48 justify-center items-end p-2 bg-white m-4 shadow-md rounded-md">
     <% hours.first(14).each do |hour, value| %>
-      <div class="w-6 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="height: calc((<%= value %>% * 3 + 25px))"><%= hour %></div>
+      <div class="w-6 bg-indigo-<%=(value/10.0).ceil * 100 + 300%> text-white font-bold text-sm flex justify-center items-end pb-1 rounded" style="max-height: 175px; height: calc((<%= value %>% * 3 + 25px))"><%= hour %></div>
     <% end %>
   </div>
 
-  <h2 class="text-orange-400 font-semibold text-xl mb-12">Daily consumption</h2>
+  <h2 class="text-red-400 font-semibold text-xl mb-12">Daily consumption</h2>
 
   <%= link_to "START", programs_path, method: :post, class:"w-6/12 h-12 flex justify-center items-center shadow-md bg-indigo-700 uppercase text-white focus:bg-blue-900 font-bold mb-10 px-12 rounded-md" %>
 
