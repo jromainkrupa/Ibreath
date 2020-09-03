@@ -15,7 +15,7 @@
 
         <div class="w-32 bg-white p-2 rounded-md">
           <h3 class="text-base font-semibold text-gray-800">Day <%= i + 1 %></h3>
-          <h3 class="text-base text-gray-800"><%= (start + i + 1).strftime('%a %d %b') %></h3>
+          <h3 class="text-base text-gray-800"><%= (start + i).strftime('%a %d %b') %></h3>
         </div>
 
         <% if percent.round == 0 %>

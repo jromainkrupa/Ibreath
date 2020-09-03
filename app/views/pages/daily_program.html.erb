@@ -32,8 +32,8 @@
           <div class="marker end"></div>
         </div>
         <div class="timer-container bg-gray-100">
-          <div class="timer">
-            <span> <%= Time.at(current_user.program.get_spread(DateTime.current)).utc.strftime("%H:%M")%> </span>
+          <div class="flex timer">
+            <span><%= Time.at(current_user.program.get_spread(DateTime.current)).utc.strftime("%H:%M")%></span>
           </div>
         </div>
       </section>

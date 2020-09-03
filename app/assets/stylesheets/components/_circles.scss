@@ -91,7 +91,6 @@
     .marker {
       width: 1em;
       height: 1em;
-      background: #F8FAFC;
       border-radius: 50%;
       position: absolute;
       top: 0;
@@ -100,6 +99,9 @@
     .end {
       animation: rotate-marker-dial-1 5s ease-out forwards;
       transform-origin: 50% 4em;
+      background: #80E7D9;
+    }
+    .start {
       background: #80E7D9;
     }
   }
@@ -174,6 +176,9 @@
       transform-origin: 45% 3em;
       background: #F56565;
     }
+    .start {
+      background: #F56565;
+    }
   }
 
   /**** DIAL 3 ****/
@@ -245,6 +250,9 @@
       transform-origin: 50% 2em;
       background: #667EEA;
     }
+    .start {
+      background: #667EEA;
+    }
   }
 
   .dial-background {
@@ -282,9 +290,10 @@
   position: relative;
   top:3.5em;
   bottom:0;
-  left:1em;
+  left:1.25em;
   right:0;
 }
+
 
 /** Animations **/
 
