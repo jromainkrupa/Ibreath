@@ -45,3 +45,11 @@ document.addEventListener('turbolinks:load', () => {
     console.log("event");
   }); */
 });
+
+import { loadDynamicBannerText } from '../components/type';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
