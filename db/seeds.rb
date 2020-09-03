@@ -268,11 +268,14 @@ end
 7.times do |i|
   Smoke.create(user: romain, created_at: program_date_launch_romain + 14.day)
 end
-6.times do |i|
+7.times do |i|
   Smoke.create(user: romain, created_at: program_date_launch_romain + 15.day)
 end
-2.times do |i|
+6.times do |i|
   Smoke.create(user: romain, created_at: program_date_launch_romain + 16.day)
+end
+2.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 17.day)
 end
 
 
