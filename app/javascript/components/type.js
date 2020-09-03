@@ -3,6 +3,7 @@ import Typed from 'typed.js';
 
 
 const loadDynamicBannerText = () => {
+
   const title = document.querySelector('#main-title');
     if (title) {
       new Typed('#banner-typed-text', {
