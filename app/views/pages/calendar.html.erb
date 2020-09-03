@@ -19,14 +19,14 @@
         </div>
 
         <% if percent.round == 0 %>
-          <div class="bg-teal-300 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : 0 / <%= allowed_smokes %></span> </div>
+          <div class="bg-teal-300 w-48 flex items-center font-semibold text-md rounded-md rounded-l-md text-gray-800"><span class="ml-3">Smoked : 0 / <%= allowed_smokes %></span> </div>
         <% elsif percent.round > 100 %>
-          <div class="bg-red-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
+          <div class="bg-red-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-md text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
         <% elsif percent.round == 100 %>
-          <div class="bg-blue-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
+          <div class="bg-blue-400 w-48 flex items-center font-semibold text-md rounded-md rounded-l-md text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %> </span></div>
         <% else %>
-          <div class="bg-teal-300 w-48 relative rounded-md rounded-l-none">
-            <div class="bg-blue-400 h-full" style="max-width: 100%; width: <%= percent.round %>%"></div>
+          <div class="bg-teal-300 w-48 relative rounded-md">
+            <div class="bg-blue-400 h-full rounded-l-md" style="max-width: 100%; width: <%= percent.round %>%"></div>
             <p class="spared font-semibold text-md text-gray-800"><span class="ml-3">Smoked : <%= smoked_smokes %> / <%= allowed_smokes %></span> </p>
           </div>
         <% end %>
@@ -38,7 +38,7 @@
         <h3 class="text-base font-semibold text-gray-800">Day 30</h3>
         <h3 class="text-base text-gray-800"><%= (start + 30).strftime('%a %d %b') %></h3>
       </div>
-      <div class="bg-teal-300 w-48 flex items-center font-semibold text-md rounded-md rounded-l-none text-gray-800"><span class="ml-3">Freedom!</span> </div>
+      <div class="bg-teal-300 w-48 flex items-center font-semibold text-md rounded-md  text-gray-800"><span class="ml-3">Freedom!</span> </div>
     </div>
   </div>
 </div>
