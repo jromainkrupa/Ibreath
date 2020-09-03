@@ -220,11 +220,59 @@ romain_program_smokes.each_with_index do |smoke, index|
 end
 
 14.times do |i|
-  Smoke.create(user:romain, created_at: program_date_launch_romain + i.hours)
+  Smoke.create(user:romain, created_at: program_date_launch_romain)
 end
 
 14.times do |i|
-  Smoke.create(user: romain, created_at: program_date_launch_romain + 1.day + i.hours)
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 1.day)
+end
+
+12.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 2.day)
+end
+
+5.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 3.day)
+end
+
+13.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 4.day)
+end
+20.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 5.day)
+end
+12.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 6.day)
+end
+11.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 7.day)
+end
+11.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 8.day)
+end
+9.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 9.day)
+end
+10.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 10.day)
+end
+10.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 11.day)
+end
+9.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 12.day)
+end
+11.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 13.day)
+end
+7.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 14.day)
+end
+6.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 15.day)
+end
+2.times do |i|
+  Smoke.create(user: romain, created_at: program_date_launch_romain + 16.day)
 end
 
 
