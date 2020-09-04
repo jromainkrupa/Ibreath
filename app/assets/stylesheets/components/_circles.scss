@@ -297,7 +297,11 @@
   font-size:15px;
 }
 .timer-container .timer p {
-  font-size: 10px;
+  font-size: 8px;
+}
+.timer-container .timer span {
+  top: -5px;
+  position: relative;
 }
 
 
