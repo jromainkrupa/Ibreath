@@ -3,7 +3,7 @@
   width: 8em;
   height: 8em;
   left: 16.5%;
-  top:5em;
+  top:3em;
   -webkit-transform: translateX(-50%);
   transform: rotate(-90deg) scale(2.2) translateX(-50%);
 }
@@ -282,16 +282,26 @@
   bottom:0;
   height: 100%;
   position: relative;
+  text-align: center;
 }
 
 .timer-container .timer {
   transform: rotate(90deg);
   color:#677EEA;
   position: relative;
-  top:3.5em;
+  top:3.1em;
   bottom:0;
-  left:1.25em;
+  left:0em;
   right:0;
+  width:5em;
+  font-size:15px;
+}
+.timer-container .timer p {
+  font-size: 8px;
+}
+.timer-container .timer span {
+  top: -5px;
+  position: relative;
 }
 
 
