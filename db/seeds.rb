@@ -35,7 +35,7 @@ puts "joseph creation !"
 puts "let's set Joseph prepwork"
 
 # We begin the prepwork for joseph
-init_date_time = DateTime.new(2020,8,3,9,00,00)
+init_date_time = DateTime.new(2020,01,3,9,00,00)
 
 puts "Day 1 consumption:"
 Smoke.create(user:joseph, created_at: init_date_time)
@@ -128,7 +128,7 @@ romain = User.create(
   )
 puts "let's set Romain prepwork"
 # We begin the prepwork for joseph
-init_date_time = DateTime.new(2020,8,10,9,00,00)
+init_date_time = DateTime.new(2020,1,12,9,00,00)
 puts "Day 1 consumption:"
 Smoke.create(user:romain, created_at: init_date_time)
 puts "#{romain.first_name} smokes at: #{Smoke.last.created_at}"
@@ -183,7 +183,7 @@ puts "////////////////////////////"
 puts "romain Programm is ready !!!"
 puts "////////////////////////////"
 
-program_date_launch_romain = DateTime.new(2020,8,17,9,30,15)
+program_date_launch_romain = DateTime.new(2020,1,19,9,30,15)
 
 total_romain_smoke = Smoke.where(user: romain).count
 first_romain_smoke_date = Smoke.where(user: romain).first.created_at.to_datetime
