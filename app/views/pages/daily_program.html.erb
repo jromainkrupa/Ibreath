@@ -114,19 +114,22 @@
     <div class="bg-gray-100 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
       <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
-        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
+        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl">
+          <%= current_user.get_number_of_smoke(Date.current) %></strong> <br> cigarettes</p>
       </div>
     </div>
     <div class="bg-indigo-500 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
         <p class="text-white text-xl font-bold pl-4 pr-2 leading-6">You <br> spared</p>
       <div class="bg-gray-100 h-full w-7/12 rounded-md flex items-center justify-center">
-        <p class="text-indigo-500 font-bold pl-4 pr-2 leading-5 text-center"> <strong class="text-5xl"> <%= current_user.program.cigarette_allowed_for(Date.current) - current_user.get_number_of_smoke(Date.current) %> </strong> <br> cigarettes </p>
+        <p class="text-indigo-500 font-bold pl-4 pr-2 leading-5 text-center"> <strong class="text-5xl">
+          <%= current_user.program.cigarette_allowed_for(Date.current) - current_user.get_number_of_smoke(Date.current) %> </strong> <br> cigarettes </p>
       </div>
     </div>
     <div class="bg-gray-100 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
       <p class="text-teal-300 text-xl font-bold pl-4 pr-2 leading-6">You can<br> smoke</p>
       <div class="bg-teal-300 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
-        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl"><%= current_user.program.cigarette_allowed_for(Date.current) %></strong> <br> cigarettes</p>
+        <p class="text-center text-white font-bold leading-5"><strong class="text-5xl">
+          <%= current_user.program.cigarette_allowed_for(Date.current) %></strong> <br> cigarettes</p>
       </div>
     </div>
     <div class="w-full flex justify-around">
